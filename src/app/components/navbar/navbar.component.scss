@@ -1,0 +1,32 @@
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #1E232D !important;
+  opacity: 1; /* Firefox */
+}
+
+.buscar {
+    width: 690px;
+    border-radius: 0px;
+    border-color: #FFD513;
+}
+.buscar-margen {
+  margin-left: 10%;
+}
+
+.i-icon {
+  background: #FFD513;
+  color: #1E232D;
+  width: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campana {
+  color: #1E232D;
+  margin-left: auto;
+}
+
+.color-gris {
+  color: #1E232D;
+}
+

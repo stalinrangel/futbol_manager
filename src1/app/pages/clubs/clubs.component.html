@@ -1,0 +1,767 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-primary opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Club Levante FC</h1>
+        <p class="text-white mt-0 mb-5">Aqui encontraras la informacion resumida</p>
+        <!--a href="#!" class="btn btn-info">Edit profile</a-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/img/theme/club.jpg" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div class="d-flex justify-content-between">
+            <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">En linea</a>
+            <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Mensaje</a>
+          </div>
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div>
+                  <span class="heading">22</span>
+                  <span class="description">Contactos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <h3>
+              Levante FC<span class="font-weight-light"></span>
+            </h3>
+            <div class="h5 font-weight-300">
+              <i class="ni location_pin mr-2"></i>Valencia, Espana
+            </div>
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>Club Manager
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i>Futbol Club
+            </div>
+            <hr class="my-4" />
+            <p>El Levante Football Club fue un club de fútbol español de la ciudad de Valencia en la ... (viento de levante), que entra en la ciudad de Valencia por esta playa..</p>
+            <a href="javascript:void(0)">Ir a Web</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Mi club</h3>
+            </div>
+            <div class="col-4 text-right">
+              <!--a href="#!" class="btn btn-sm btn-primary">Settings</a-->
+            </div>
+          </div>
+        </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="custom-tab-content flex-column flex-md-row">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active1" class="nav nav-pills justify-content-center" type="pills">
+                  <li class="nav-item" [ngbNavItem]="1">
+                    <a class="nav-link" ngbNavLink><i class="ni ni-glasses-2 mr-2"></i> Ojeadores</a>
+                    <ng-template ngbNavContent>
+                      <div class="tab-content">
+                        <div class="row">
+                          <div class="col">
+                            <div class="card shadow">
+                              <div class="card-header border-0">
+                                <!--h3 class="mb-0">Card tables</h3-->
+                              </div>
+                              <div class="table-responsive">
+                                <table class="table align-items-center table-flush">
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Nombre</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Estado</th>
+                                      <th scope="col">Pais</th>
+                                      <th scope="col">Completion</th>
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/oj.jpeg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Ojeador 1</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        ojeador1@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Francia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/oj.jpeg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Ojeador 2</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        ojeador2@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Inactivo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Italia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/oj.jpeg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Ojeador 3</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        ojeador3@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Portugal</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/oj.jpeg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Ojeador 4</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        ojeador4@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Espana</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/oj.jpeg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Ojeador 5</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        ojeador5@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Francia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="card-footer py-4">
+                                <nav aria-label="...">
+                                  <ul class="pagination justify-content-end mb-0">
+                                    <li class="page-item disabled">
+                                      <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                        <i class="fas fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                      </a>
+                                    </li>
+                                    <li class="page-item active">
+                                      <a class="page-link" href="javascript:void(0)">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="javascript:void(0)">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="sr-only">Next</span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li class="nav-item" [ngbNavItem]="2">
+                    <a class="nav-link" ngbNavLink>
+                      <i class="ni ni-user-run mr-2"></i> Jugadores
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="tab-content">
+                        <div class="row">
+                          <div class="col">
+                            <div class="card shadow">
+                              <div class="card-header border-0">
+                                <h3 class="mb-0">Card tables</h3>
+                              </div>
+                              <div class="table-responsive">
+                                <table class="table align-items-center table-flush">
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Nombre</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Estado</th>
+                                      <th scope="col">Pais</th>
+                                      <th scope="col">Completion</th>
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/cristiano-ronaldo.jpg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Jugador 1</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        jugador1@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Francia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/cristiano-ronaldo.jpg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Jugador 2</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        jugador2@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Inactivo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Italia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/cristiano-ronaldo.jpg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Jugador 3</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        jugador3@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Portugal</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/cristiano-ronaldo.jpg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Jugador 4</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        jugador4@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Espana</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">
+                                        <div class="media align-items-center">
+                                          <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="../assets/img/theme/cristiano-ronaldo.jpg">
+                                          </a>
+                                          <div class="media-body">
+                                            <span class="mb-0 text-sm">Jugador 5</span>
+                                          </div>
+                                        </div>
+                                      </th>
+                                      <td>
+                                        jugador5@futbol.com
+                                      </td>
+                                      <td>
+                                        <span class="badge badge-dot mr-4">
+                                          <i class="bg-warning"></i> Activo
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <div class="media-body">
+                                          <span class="mb-0 text-sm">Francia</span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="mr-2">60%</span>
+                                          <div>
+                                            <div class="progress">
+                                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-right">
+                                        <div ngbDropdown placement="bottom-right">
+                                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                          </a>
+                                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="card-footer py-4">
+                                <nav aria-label="...">
+                                  <ul class="pagination justify-content-end mb-0">
+                                    <li class="page-item disabled">
+                                      <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                        <i class="fas fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                      </a>
+                                    </li>
+                                    <li class="page-item active">
+                                      <a class="page-link" href="javascript:void(0)">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="javascript:void(0)">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="sr-only">Next</span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li class="nav-item" [ngbNavItem]="3">
+                    <a class="nav-link" ngbNavLink>
+                      <i class="ni ni-circle-08 mr-2"></i> Perfil
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="tab-content">
+                        <form>
+                          <h6 class="heading-small text-muted mb-4">Informacion del usuario</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-username">Usuario</label>
+                                  <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="levantefc">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-email">Correo</label>
+                                  <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="levante@example.com">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-first-name">Nombre</label>
+                                  <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Michele">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-last-name">Apellidos</label>
+                                  <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Casillas">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                          <!-- Address -->
+                          <h6 class="heading-small text-muted mb-4">Informacion de contacto</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-address">Direccion</label>
+                                  <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-city">Telefono</label>
+                                  <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="4141243431">
+                                </div>
+                              </div>
+                              <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-country">Pais</label>
+                                  <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="Espana">
+                                </div>
+                              </div>
+                              <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-country">Codigo postal</label>
+                                  <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="01042">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                          <!-- Description -->
+                          <h6 class="heading-small text-muted mb-4">Mi informacion a mostrar</h6>
+                          <div class="pl-lg-4">
+                            <div class="form-group">
+                              <label>Informacion</label>
+                              <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">El Levante Football Club fue un club de fútbol español de la ciudad de Valencia en la ... (viento de levante), que entra en la ciudad de Valencia por esta playa.</textarea>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </ng-template>
+                  </li>
+                </ul>
+              </div>
+
+              <div [ngbNavOutlet]="nav" class="custom-tab-content"></div>
+            </div>
+          </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
