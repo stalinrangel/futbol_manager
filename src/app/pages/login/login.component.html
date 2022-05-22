@@ -21,16 +21,23 @@
                   <form role="form">
                     <div class="form-group mb-3">
                       <div class="input-group input-group-alternative">
-                        <input class="form-control i-f" placeholder="Username" type="email">
+                        <input required name="email" [(ngModel)]="model.email" #email="ngModel" class="form-control i-f" placeholder="Username" type="email">
                         <img src="assets/img/manager/Profile.svg" alt="" class="i-icon">
                       </div>
                     </div>
+                    
+                    <ng-container *ngIf="email.invalid && email.dirty">
+                      <span class="help is-danger">El campo e-mail es requerido</span>
+                    </ng-container>
                     <div class="form-group">
                       <div class="input-group input-group-alternative">
-                        <input class="form-control i-f" placeholder="Password" type="password">
+                        <input required name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control i-f" placeholder="Password" type="password">
                         <img src="assets/img/manager/Lock.svg" alt="" class="i-icon">
                       </div>
                     </div>
+                    <ng-container *ngIf="password.invalid && email.dirty">
+                      <span class="help is-danger">El campo password es requerido</span>
+                    </ng-container>
                     <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
                       <label class="custom-control-label" for=" customCheckLogin">
@@ -41,7 +48,7 @@
                     <br>
                     <div class="text-center">
                       <button type="button" class="btn  btn-outline-primary my-4" [routerLink]="['/register']">Registrarme</button>
-                      <button type="button" class="btn btn-primary my-4" [routerLink]="['/dashboard']">Iniciar sesion</button>
+                      <button type="button" class="btn btn-primary my-4" (click)="login()">Iniciar sesion</button>
                     </div>
                   </form>
                 </div>
