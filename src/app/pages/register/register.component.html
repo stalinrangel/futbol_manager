@@ -20,6 +20,7 @@
                 </div>
                 <div class="col-6" class="img-border">
                   <!--img src="assets/img/manager/bg.png" alt="" class="img-bg"-->
+                  <input type="file" #file (change) = "onFileChange($event)" /> i
                   <img src="assets/img/manager/Combined-Shape.svg" alt="" class="img-border-img">
                   <p class="p-bg">Drag and drop your photos</p>
                 </div>
@@ -101,7 +102,7 @@
                     </div>
                     <div class="col-4">
                       <div class="text-center">
-                        <button type="button" class="btn btn-primary my-4" [routerLink]="['/dashboard']">Ingresar</button>
+                        <button type="button" class="btn btn-primary my-4" (click)="register()">Ingresar</button>
                       </div>
                     </div>
                   </div>
