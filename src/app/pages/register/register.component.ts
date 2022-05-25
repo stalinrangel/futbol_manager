@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
   this.identityService.signup(this.formData).subscribe({
     next(data){
       console.log(data);
-      self.router.navigate(['/login']);
+      self.router.navigate(['/activar']);
     },error(err){
       console.log(err);
     }

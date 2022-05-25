@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         self.router.navigate(['/dashboard']);
       },error(err){
         console.log(err);
+        if(err.error.err=='Inactive club'){
+          self.router.navigate(['/activar']);
+        }
       }
     })
   }
