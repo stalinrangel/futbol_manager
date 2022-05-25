@@ -14,7 +14,7 @@ const routes: Routes =[
     pathMatch: 'full',
   }, {
     path: '',
-    component: AdminLayoutComponent, canActivate: [AuthGuard],
+    component: AdminLayoutComponent,
     children: [
       {
         path: '',
@@ -23,7 +23,7 @@ const routes: Routes =[
     ]
   }, {
     path: '',
-    component: AuthLayoutComponent,canActivate: [AuthGuard],
+    component: AuthLayoutComponent,
     children: [
       {
         path: '',
