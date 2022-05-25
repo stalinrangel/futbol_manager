@@ -1,0 +1,36 @@
+<div style="background-image: url(assets/img/manager/header.png); background-size: cover; background-position: center; background: rgba(black, 0.5) !important; height: 100vh;">
+    <div class="card-overlay" style="height: 100vh;">
+      <div class="header pb-4 pt-5 pt-lg-8 d-flex align-items-center"></div>
+      <!-- Page content --> 
+      
+      <div class="mt--6 pb-9">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-10">
+            <div class="card">
+              <div class="row">
+                <div class="col-12 login-left">
+                    <h3>Bienvenidos al espacio del futbol</h3>
+                    <h4>Ingresa el Token que se te envio al email.</h4>
+                    <form role="form">
+                      <div class="form-group mb-3">
+                          <div class="input-group input-group-alternative"><br>
+                            <input required name="tk" [(ngModel)]="tk" class="form-control i-f" placeholder="">
+                          </div>
+                      </div>
+                      <button type="button" class="btn btn-primary my-4" (click)="activar()">Activar cuenta</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-success alert-right" role="alert" *ngIf="false">
+        <strong>Has sido validado!</strong> Por favor, inicie sesion.
+      </div>
+      <div class="alert alert-danger alert-right" role="alert" *ngIf="tkerror">
+        <strong>Ha ocurrido un error!</strong> {{tkerr}}
+      </div>
+    </div>
+  </div>
+  

@@ -1,6 +1,6 @@
-<div style="background-image: url(assets/img/manager/Vector.png); background-size: cover; background-position: center; background: rgba(black, 0.5) !important;">
-  <div class="card-overlay">
-    <div class="header pb-4 pt-5 pt-lg-8 d-flex align-items-center" ></div>
+<div style="background-image: url(assets/img/manager/Vector.png); background-size: cover; background-position: center; background: rgba(black, 0.5) !important;height: 100vh;">
+  <div class="card-overlay" style="height: 100vh;">
+    <div class="header pb-4 pt-5 pt-lg-8 d-flex align-items-center"></div>
     <!-- Page content -->
     <div class="mt--6 pb-9">
       <div class="row justify-content-center">
@@ -18,11 +18,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-6" class="img-border">
+                <div class="col-6" class="img-border" fileDragDrop (filesChangeEmiter)="onFileChange($event)">
                   <!--img src="assets/img/manager/bg.png" alt="" class="img-bg"-->
-                  <input type="file" #file (change) = "onFileChange($event)" /> i
-                  <img src="assets/img/manager/Combined-Shape.svg" alt="" class="img-border-img">
-                  <p class="p-bg">Drag and drop your photos</p>
+                  <input type="file" #file (change) = "onFileChange($event)" style="display:none" /> 
+                  <img src="{{imagen}}" alt="" class="img-border-img" (click)="file.click()">
+                  <p class="p-bg" (click)="file.click()">Drag and drop your photos</p>
                 </div>
               </div>
               <div class="login-bottom">
@@ -32,21 +32,21 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Nombre" type="email">
+                          <input class="form-control i-f" required name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="Nombre del club">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Pais" type="password">
+                          <input class="form-control i-f" required name="pais" [(ngModel)]="model.country" #pais="ngModel" placeholder="Pais">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Municipio" type="password">
+                          <input class="form-control i-f" required name="state" [(ngModel)]="model.state" #state="ngModel" placeholder="Estado" >
                         </div>
                       </div>
                     </div>
@@ -55,21 +55,21 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Nombre del Club" >
+                          <input class="form-control i-f" required name="municipio" [(ngModel)]="model.province" #municipio="ngModel" placeholder="Provincia">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="E-mail" type="email">
+                          <input class="form-control i-f" required name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="E-mail" type="email">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Telefono" type="number">
+                          <input class="form-control i-f" required name="phone" [(ngModel)]="model.phone" #phone="ngModel" placeholder="Telefono">
                         </div>
                       </div>
                     </div>
@@ -78,18 +78,23 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Contraseña" type="password">
+                          <input class="form-control i-f" required name="cif" [(ngModel)]="model.cif" #cif="ngModel" placeholder="Cif" >
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" placeholder="Repita la contraseña" type="password">
+                          <input class="form-control i-f" required name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Contraseña" type="password">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
+                      <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                          <input class="form-control i-f" required name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Contraseña"  placeholder="Repita la contraseña" type="password">
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
