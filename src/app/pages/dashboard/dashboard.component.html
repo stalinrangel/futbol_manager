@@ -19,64 +19,14 @@
     </div>
   </div>
   <hr class="hrr">
-  <div class="row">
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
+  <div class="row" *ngIf="mostrar">
+    <div *ngFor="let item of post" class="col-3">
+      <video src="{{item.post_data.video}}"  controls class="v"></video><br>
       <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
+        <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi">
         <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet<br>
-            Alejandro <i class="fas fa-check-circle"></i>
-        </p>
-      </div>
-    </div>
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
-      <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
-        <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet <br>
-            Alejandro <i class="fas fa-check-circle"></i>
-        </p>
-      </div>
-    </div>
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
-      <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
-        <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet<br>
-            Alejandro <i class="fas fa-check-circle"></i>
-        </p>
-      </div>
-    </div>
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
-      <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
-        <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet<br>
-            Alejandro <i class="fas fa-check-circle"></i>
-        </p>
-      </div>
-    </div>
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
-      <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
-        <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet<br>
-            Alejandro <i class="fas fa-check-circle"></i>
-        </p>
-      </div>
-    </div>
-    <div class="col-3">
-      <video src="https://www.youtube.com/watch?v=Xz3uCjxw4xw"  controls class="v"></video><br>
-      <div class="va">
-        <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws" class="vi">
-        <p class="" href="" style="padding-left: 10px;">
-            Lorem ipsum dolor sit amet<br>
-            Alejandro <i class="fas fa-check-circle"></i>
+            {{item.post_data.title}}<br>
+            {{item.user_data.firstname}} <i class="fas fa-check-circle"></i>
         </p>
       </div>
     </div>

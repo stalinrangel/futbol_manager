@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },*/
 
     { path: '/scooting', title: 'Scooting',  icon:'fa-compass text-primary', class: 'ws' },
-    { path: '/scooting', title: 'Promocionados',  icon:'fa-bolt text-primary', class: '' },
+    { path: '/promo', title: 'Promocionados',  icon:'fa-bolt text-primary', class: '' },
     /*{ path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }*/
 ];
 

@@ -17,6 +17,9 @@ import { UsersComponent } from '../../pages/users/users.component';
 import { PlayersComponent } from '../../pages/players/players.component';
 import { PaysComponent } from '../../pages/pays/pays.component';
 import { InboxComponent } from '../../pages/inbox/inbox.component';
+import { PromoComponent } from '../../pages/promo/promo.component';
+import { UserPlayerComponent } from '../../pages/user-player/user-player.component';
+import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
 
 import { ScootingComponent } from '../../pages/scooting/scooting.component';
 // import { ToastrModule } from 'ngx-toastr';
@@ -42,6 +45,9 @@ import { ScootingComponent } from '../../pages/scooting/scooting.component';
     PaysComponent,
     InboxComponent,
     ScootingComponent,
+    PromoComponent,
+    UserPlayerComponent,
+    SubscriptionComponent,
   ]
 })
 

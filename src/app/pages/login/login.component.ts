@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       next(data){
         //console.log(data);
         self.userStorageService.set(data);
-        self.router.navigate(['/dashboard']);
+        setTimeout(() => {
+          self.router.navigate(['/dashboard']);
+        }, 250);
       },error(err){
         console.log(err);
         if(err.error.err=='Inactive club'){

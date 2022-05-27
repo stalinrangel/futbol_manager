@@ -18,6 +18,6 @@ export class PostService {
       var timestamp="2022-05-24 22:26:28";
       let headers = new HttpHeaders();
       headers = headers.set('Authorization', 'Bearer '+this.user.token);
-    return this.http.get(this.e.apiUrl+'/admin/posts/club/9?limit='+limit+'&timestamp='+timestamp,{headers: headers})
+    return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
   }
 }

@@ -108,7 +108,7 @@
               </a>
           </li>
           <li class="ws nav-item">
-              <a routerLinkActive="active" [routerLink]="['/posicionados']" class="nav-link">
+              <a routerLinkActive="active" [routerLink]="['/promo']" class="nav-link">
                   <i class="fas fa-bolt"></i>
                   Promocionados
               </a>
@@ -122,8 +122,18 @@
       <p class="seguido">SEGUIDOS</p>
       <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" [routerLink]="['/user-player']">
             <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws">  Alejandro
+          </a>
+        </li>
+      </ul>
+      <!-- Divider -->
+      <hr class="my-3">
+      <p class="seguido">PREMIUN</p>
+      <ul class="navbar-nav mb-md-3">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/subscription']">
+            <i class="fas fa-star" style="color: #FFD513;"></i>  Suscripción
           </a>
         </li>
       </ul>

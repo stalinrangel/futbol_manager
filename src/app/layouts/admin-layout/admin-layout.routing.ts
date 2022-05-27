@@ -11,6 +11,9 @@ import { PlayersComponent } from '../../pages/players/players.component';
 import { PaysComponent } from '../../pages/pays/pays.component';
 import { InboxComponent } from '../../pages/inbox/inbox.component';
 import { ScootingComponent } from '../../pages/scooting/scooting.component';
+import { PromoComponent } from '../../pages/promo/promo.component';
+import { UserPlayerComponent } from '../../pages/user-player/user-player.component';
+import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -24,4 +27,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'pays',           component: PaysComponent },
     { path: 'inbox',          component: InboxComponent },
     { path: 'scooting',       component: ScootingComponent },
+    { path: 'promo',          component: PromoComponent },
+    { path: 'user-player',    component: UserPlayerComponent },
+    { path: 'subscription',   component: SubscriptionComponent },
 ];
