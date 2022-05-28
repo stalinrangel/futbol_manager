@@ -28,6 +28,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'inbox',          component: InboxComponent },
     { path: 'scooting',       component: ScootingComponent },
     { path: 'promo',          component: PromoComponent },
-    { path: 'user-player',    component: UserPlayerComponent },
+    { path: 'user-player/:id',    component: UserPlayerComponent },
     { path: 'subscription',   component: SubscriptionComponent },
 ];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service';
 
 declare interface RouteInfo {
     path: string;
@@ -30,13 +31,31 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;
+  public seguidores:any=[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ps: PostService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
-   });
+    });
+    let self=this;
+    setTimeout(() => {
+      this.ps.seguidores().subscribe({
+        next(data){
+          console.log(data);
+          self.seguidores=data;
+          for (let i = 0; i < self.seguidores.length; i++) {
+            //self.post[i].user_data.imagen="https://api.ronnie.es/uploads/user/"+self.post[i].user_data.id+"/profile/"+self.post[i].user_data.picture;
+            //self.post[i].post_data.video="https://api.ronnie.es/"+self.post[i].post_data.url;
+          }
+          console.log(self.seguidores)
+        },error(err){
+          console.log(err);
+        }
+      })
+    }, 250);
+
   }
 }

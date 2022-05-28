@@ -1,13 +1,13 @@
 export class RegisterModel {
-    public email:string="e.stalinrangel@gmail.com";
-    public password:string="123456789";
-    public rpassword:string="123456789";
-    public user_type:string="club";
+    public email:string;
+    public password:string;
+    public rpassword:string;
+    public user_type:string;
     public picture:any;
-    public country:string= "Spain";
-    public state:string= "Madrid";
-    public province:string= "Madrid";
-    public phone:string= "+34 655 79 88 28";
-    public name:string= "Barcelona";
-    public cif:string= "123456789";
+    public country:string;
+    public state:string;
+    public province:string;
+    public phone:string;
+    public name:string;
+    public cif:string;
   }

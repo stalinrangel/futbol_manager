@@ -18,6 +18,24 @@ export class PostService {
       var timestamp="2022-05-24 22:26:28";
       let headers = new HttpHeaders();
       headers = headers.set('Authorization', 'Bearer '+this.user.token);
-    return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
+      return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
+  }
+
+  seguidores(): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer '+this.user.token);
+    return this.http.get(this.e.apiUrl+'/admin/user/list/type',{headers: headers})
+  }
+
+  user_post(id): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer '+this.user.token);
+  return this.http.get(this.e.apiUrl+'/posts/user/'+id,{headers: headers})
+  }
+
+  user_info(id): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer '+this.user.token);
+  return this.http.get(this.e.apiUrl+'/profile/'+id+'/user',{headers: headers})
   }
 }

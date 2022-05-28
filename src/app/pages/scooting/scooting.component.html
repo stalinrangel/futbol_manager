@@ -23,8 +23,8 @@
         <div *ngFor="let item of post" class="col-3">
           <video src="{{item.post_data.video}}"  controls class="v"></video><br>
           <div class="va">
-            <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi">
-            <p class="" href="" style="padding-left: 10px;">
+            <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi" [routerLink]="['/user-player',item.user_data.id]">
+            <p class="" [routerLink]="['/user-player',item.user_data.id]" style="padding-left: 10px; font-size: 14px;">
                 {{item.post_data.title}}<br>
                 {{item.user_data.firstname}} <i class="fas fa-check-circle"></i>
             </p>

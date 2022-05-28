@@ -1,1 +1,172 @@
-<p>user-player works!</p>
+<div class="header pt-5 d-flex align-items-center" style="min-height: 300px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <!-- Mask -->
+    <span class="mask bg-gradient-primary opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+            <div class="div_headers">
+                <img src="{{imagen}}" alt="" class="imagen-player">
+                <h1 class="text-white">{{player.firstname}}</h1>
+            </div>
+          
+          <!--a href="#!" class="btn btn-info">Edit profile</a-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="height: 100vh;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="custom-tab-content flex-column flex-md-row padding-tab">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active1" class="nav nav-pills" type="pills">
+                    <li class="nav-item" [ngbNavItem]="1">
+                    <a class="nav-link" ngbNavLink><i class="ni ni-glasses-2 mr-2"></i> Videos</a>
+                    <ng-template ngbNavContent>
+                        <div class="tab-content">
+                            <div class="row">
+                                <div *ngFor="let item of post" class="col-3">
+                                    <video src="{{item.post_data.video}}"  controls class="v"></video><br>
+                                    <div class="va">
+                                      <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi">
+                                      <p class="" href="" style="padding-left: 10px; font-size: 14px;">
+                                          {{item.post_data.title}}<br>
+                                          {{item.user_data.firstname}} <i class="fas fa-check-circle"></i>
+                                      </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    </li>
+                    <li class="nav-item" [ngbNavItem]="2">
+                    <a class="nav-link" ngbNavLink>
+                        <i class="ni ni-circle-08 mr-2"></i> Perfil
+                    </a>
+                    <ng-template ngbNavContent>
+                        <div class="tab-content">
+                        <form>
+                            <h6 class="heading-small text-muted mb-4">Identidad del Jugador</h6>
+                            <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Nombre</label>
+                                    <input type="text" class="form-control form-control-alternative" name="firstname" [(ngModel)]="player.firstname"  placeholder="Nombre" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">Apellido</label>
+                                    <input type="text" class="form-control form-control-alternative" name="lastname" [(ngModel)]="player.lastname"  placeholder="Apellido" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-first-name">Correo</label>
+                                        <input type="email" class="form-control form-control-alternative" name="email" [(ngModel)]="player.email"  placeholder="Correo" disabled>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-first-name">Telefono</label>
+                                    <input type="text" class="form-control form-control-alternative" name="phone" [(ngModel)]="player.phone"  placeholder="phone" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Fecha de nacimiento</label>
+                                    <input type="text" class="form-control form-control-alternative" name="birthday" [(ngModel)]="player.birthday"  placeholder="Fecha" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Sexo</label>
+                                    <input type="text" class="form-control form-control-alternative" name="genre" [(ngModel)]="player.genre"  placeholder="Masculino" disabled>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <hr class="my-4" />
+                            <!-- Address -->
+                            <h6 class="heading-small text-muted mb-4">Informacion del jugador</h6>
+                            <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Club</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_club" [(ngModel)]="player.player_club" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">División</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_division" [(ngModel)]="player.player_division" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Posición</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_position" [(ngModel)]="player.player_position" disabled>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-last-name">Número</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_number" [(ngModel)]="player.player_number" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-city">Estatura</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_height" [(ngModel)]="player.player_height" disabled>
+                                </div>
+                                </div>
+                                <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-country">Pie</label>
+                                    <input type="text" class="form-control form-control-alternative" name="player_foot" [(ngModel)]="player.player_foot" disabled>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <hr class="my-4" />
+                            <!-- Description -->
+                            <h6 class="heading-small text-muted mb-4">Dirección mostrar</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-last-name">País</label>
+                                        <input type="text" class="form-control form-control-alternative" name="country" [(ngModel)]="player.country" disabled>
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-city">Estado</label>
+                                        <input type="text" class="form-control form-control-alternative" name="state" [(ngModel)]="player.state" disabled>
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-country">Provincia</label>
+                                        <input type="text" class="form-control form-control-alternative" name="province" [(ngModel)]="player.province" disabled>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </ng-template>
+                    </li>
+                </ul>
+            </div>
+            <div [ngbNavOutlet]="nav" class="custom-tab-content"></div>
+        </div>
+    </div>
+  </div>
+  
