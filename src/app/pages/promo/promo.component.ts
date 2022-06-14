@@ -15,7 +15,7 @@ export class PromoComponent implements OnInit {
   ngOnInit() {
     let self=this;
     setTimeout(() => {
-      this.p.home().subscribe({
+      this.p.scooting().subscribe({
         next(data){
           console.log(data);
           self.post=data;

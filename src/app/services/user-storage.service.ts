@@ -9,6 +9,16 @@ export class UserStorageService {
 
   constructor() { }
 
+  get acces_token(): string {
+    let user = localStorage.getItem(this.key);
+
+    if (user) {
+      let objUser= JSON.parse(user);
+      return objUser.token;
+    }
+    return null;
+  }
+
   get user(): UserModel {
     let user = localStorage.getItem(this.key);
 

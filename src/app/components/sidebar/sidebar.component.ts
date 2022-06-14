@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 
@@ -22,35 +22,70 @@ export const ROUTES: RouteInfo[] = [
     /*{ path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }*/
 ];
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
+  
   public menuItems: any[];
   public isCollapsed = true;
   public seguidores:any=[];
+  public lista_seguidores:any=[];
 
-  constructor(private router: Router, private ps: PostService) { }
+  constructor(private router: Router, private ps: PostService,public elementRef: ElementRef) { }
 
   ngOnInit() {
+
+    const dom: HTMLElement = this.elementRef.nativeElement;
+    const elements = dom.querySelectorAll('.list__button--click');
+
+
+    elements.forEach(elements => {
+      elements.addEventListener('click', ()=>{
+          elements.classList.toggle('arrow');
+          let height = 0;
+          let menu = elements.nextElementSibling;
+          if(menu.clientHeight === 0){
+              height=menu.scrollHeight;
+              //menu.setAttribute("class","abrir");
+              menu.setAttribute("style", "height:"+`${height}px`+";");
+          }else{
+            //menu.setAttribute("class","cerrar")
+            menu.setAttribute("style", "height:"+0+";");;
+          }
+          
+          //menu.style.height = `${height}px`;
+  
+      })
+    });
+
+
+
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
+
+
+
     let self=this;
     setTimeout(() => {
       this.ps.seguidores().subscribe({
         next(data){
           console.log(data);
           self.seguidores=data;
-          for (let i = 0; i < self.seguidores.length; i++) {
-            //self.post[i].user_data.imagen="https://api.ronnie.es/uploads/user/"+self.post[i].user_data.id+"/profile/"+self.post[i].user_data.picture;
-            //self.post[i].post_data.video="https://api.ronnie.es/"+self.post[i].post_data.url;
+          self.lista_seguidores=self.seguidores.user_list;
+          for (let i = 0; i < self.lista_seguidores.length; i++) {
+            if (self.lista_seguidores[i].picture!=null) {
+              self.lista_seguidores[i].imagen="https://api.ronnie.es/uploads/user/"+self.lista_seguidores[i].id+"/profile/"+self.lista_seguidores[i].picture;
+            }else{
+              self.lista_seguidores[i].imagen="assets/img/manager/avatar_user.png";
+            }
           }
-          console.log(self.seguidores)
+          console.log(self.lista_seguidores)
         },error(err){
           console.log(err);
         }
@@ -58,4 +93,16 @@ export class SidebarComponent implements OnInit {
     }, 250);
 
   }
+  public abrio:boolean=false;
+  abrir(){
+    if (this.abrio==true) {
+      this.abrio=false;
+    }else{
+      this.abrio=true;
+    }
+    console.log(this.abrio);
+    return this.abrio;
+  }
+
+  
 }

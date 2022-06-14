@@ -27,4 +27,12 @@ export class IdentityService {
     }
     return this.http.post(this.e.apiUrl+'/auth/activate', send)
   }
+
+  refresh(token: any): Observable<any> {
+    var send = {
+      "user_type": "club",
+      "token": token
+    }
+    return this.http.get(this.e.apiUrl+'/auth/token?user_type=club&token='+token)
+  }
 }

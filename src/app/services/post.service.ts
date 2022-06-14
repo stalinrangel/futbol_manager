@@ -14,19 +14,27 @@ export class PostService {
 
   private user= this.uss.user;
   home(): Observable<any> {
-      var limit=10;
-      var timestamp="2022-04-06 22:26:28";
+      var limit=50;
+      var timestamp=new Date();
       let headers = new HttpHeaders();
       headers = headers.set('Authorization', 'Bearer '+this.user.token);
       //return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
-      return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit,{headers: headers})
+      //return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit,{headers: headers})
+      return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit)
+  }
+
+  scooting(): Observable<any> {
+    var limit=50;
+    var timestamp=new Date(); 
+    return this.http.get(this.e.apiUrl+'/posts/private?limit='+limit)
   }
 
   seguidores(): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer '+this.user.token);
 
-    return this.http.get(this.e.apiUrl+'/profile/user/1/followings??limit='+10,{headers: headers})
+    //return this.http.get(this.e.apiUrl+'/profile/club/'+this.user.id+'/followings??limit='+10,{headers: headers})
+    return this.http.get(this.e.apiUrl+'/profile/club/'+this.user.id+'/followings??limit='+10)
   }
 
   seguir(): Observable<any> {
@@ -42,12 +50,19 @@ export class PostService {
   user_post(id): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer '+this.user.token);
-  return this.http.get(this.e.apiUrl+'/posts/user/'+id,{headers: headers})
+  return this.http.get(this.e.apiUrl+'/profile/user/'+id+'/posts',{headers: headers})
   }
 
   user_info(id): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer '+this.user.token);
-  return this.http.get(this.e.apiUrl+'/profile/'+id+'/user',{headers: headers})
+  return this.http.get(this.e.apiUrl+'/profile/user/'+id,{headers: headers})
   }
+
+  send_post(data): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer '+this.user.token);
+    return this.http.post(this.e.apiUrl+'/posts/private',data,{headers: headers})
+  }
+
 }

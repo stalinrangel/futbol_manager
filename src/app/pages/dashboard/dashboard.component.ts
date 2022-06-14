@@ -33,6 +33,21 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  
+  scooting(item){
+    console.log(item);
+    let data={
+      id: item.id,
+      to_user: 1,
+      to_type: 'club'
+    }
+    this.p.send_post(data).subscribe({
+      next(data){
+        console.log(data);
+        
+      },error(err){
+        console.log(err);
+      }
+    })
+  }
 
 }

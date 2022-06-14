@@ -1,16 +1,18 @@
-<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white sombra-lateral" id="sidenav-main">
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white sombra-lateral" id="sidenav-main" style="background-color: #1E232D !important;">
   <div class="container-fluid">
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
+    <button class="navbar-toggler blanco" type="button" (click)="isCollapsed=!isCollapsed"
        aria-controls="sidenav-collapse-main">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fas fa-bars icon-y"></i>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0"  [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
-    </a>
+    <div>
+      <a class="navbar-brand"  [routerLink]="['/dashboard']">
+        <img src="./assets/img/manager/logo.png" class="navbar-brand-img" alt="...">
+      </a>
+    </div>
     <!-- User -->
-    <ul class="nav align-items-center d-md-none">
+    <!--ul class="nav align-items-center d-md-none">
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
           <i class="ni ni-bell-55"></i>
@@ -56,28 +58,27 @@
             <span>Logout</span>
           </a>
         </div>
-      </li>
-    </ul>
+      </l>
+    </ul-->
     <!-- Collapse -->
-    <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main" style="background-color: #1E232D !important">
       <!-- Collapse header -->
       <div class="navbar-collapse-header d-md-none">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a  routerLinkActive="active" [routerLink]="['/dashboard']">
+            <a>
               <img src="./assets/img/brand/blue.png">
             </a>
           </div>
           <div class="col-6 collapse-close">
-            <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed">
-              <span></span>
-              <span></span>
+            <button type="button" class="" (click)="isCollapsed=!isCollapsed" style="background-color: #1E232D;">
+              <i class="fas fa-times icon-y"></i>
             </button>
           </div>
         </div>
       </div>
       <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
+      <!--form class="mt-4 mb-3 d-md-none">
         <div class="input-group input-group-rounded input-group-merge">
           <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
           <div class="input-group-prepend">
@@ -86,7 +87,7 @@
             </div>
           </div>
         </div>
-      </form>
+      </form-->
       <!-- Navigation -->
       <ul class="navbar-nav">
           <!--li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
@@ -96,23 +97,62 @@
               </a>
           </li-->
           <li class="ws nav-item">
-              <a routerLinkActive="active" [routerLink]="['/dashboard']" class="nav-link">
-                  <i class="fas fa-home"></i>
+              <a routerLinkActive="active" [routerLink]="['/dashboard']" class="nav-link blanco">
+                  <i class="fas fa-home icon-y"></i>
                   Inicio
               </a>
           </li>
           <li class="ws nav-item">
-              <a routerLinkActive="active" [routerLink]="['/scooting']" class="nav-link">
-                  <i class="fas fa-compass"></i>
+              <a routerLinkActive="active" [routerLink]="['/scooting']" class="nav-link blanco">
+                  <i class="fas fa-compass icon-y"></i>
                   Scooting
               </a>
           </li>
           <li class="ws nav-item">
-              <a routerLinkActive="active" [routerLink]="['/promo']" class="nav-link">
-                  <i class="fas fa-bolt"></i>
+              <a routerLinkActive="active" [routerLink]="['/promo']" class="nav-link blanco">
+                  <i class="fas fa-bolt icon-y"></i>
                   Promocionados
               </a>
           </li>
+          <li class="ws nav-item list__item list__item--click">
+            <div class="list__button list__button--click">
+              <i class="fas fa-trophy icon-y"></i>
+              <span class="sub_menu">Equipo</span>
+                <img src="assets/arrow.svg" class="list__arrow icon-y">
+            </div>
+
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a  class="nav__link nav__link--inside" routerLinkActive="active" [routerLink]="['/team']">Gestión de equipos</a>
+                </li>
+                <li class="list__inside">
+                    <a  class="nav__link nav__link--inside" routerLinkActive="active" [routerLink]="['/coach']">Gestión de entrenadores</a>
+                </li>
+            </ul>
+          </li>
+          <!--li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="assets/docs.svg" class="list__img">
+                <a class="nav__link">Servicios</a>
+                <img src="assets/arrow.svg" class="list__arrow">
+            </div>
+
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a  class="nav__link nav__link--inside">Estoy dentro</a>
+                </li>
+
+                <li class="list__inside">
+                    <a  class="nav__link nav__link--inside">Estoy dentro</a>
+                </li>
+                <li class="list__inside">
+                  <a  class="nav__link nav__link--inside">Estoy dentro</a>
+              </li>
+              <li class="list__inside">
+                <a  class="nav__link nav__link--inside">Estoy dentro</a>
+              </li>
+            </ul>
+          </li-->
       </ul>
       <!-- Divider -->
       <hr class="my-3">
@@ -121,10 +161,10 @@
       <!-- Navigation -->
       <p class="seguido">SEGUIDOS</p>
       <ul class="navbar-nav mb-md-3">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user-player',16]">
-            <img src="./assets/img/manager/Ellipse93.png" class="seguidos ws">  Alejandro
-          </a>
+        <li *ngFor="let seguidores of lista_seguidores" class="nav-item">
+            <a routerLinkActive="active" class="nav-link blanco" [routerLink]="['/user-player',seguidores.id]">
+              <img src="{{seguidores.imagen}}" class="seguidos ws img_seguidor"> <span style="margin-left: 13px;">{{seguidores.firstname}}</span> 
+            </a>
         </li>
       </ul>
       <!-- Divider -->
@@ -132,11 +172,13 @@
       <p class="seguido">PREMIUN</p>
       <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/subscription']">
-            <i class="fas fa-star" style="color: #FFD513;"></i>  Suscripción
+          <a routerLinkActive="active" class="nav-link blanco" [routerLink]="['/subscription']">
+            <i class="fas fa-star icon-y" ></i>  Suscripción
           </a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script src="main.ts"></script>

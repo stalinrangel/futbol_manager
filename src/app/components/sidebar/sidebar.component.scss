@@ -1,5 +1,5 @@
 .grad1 {
-  background-image: linear-gradient(#070707, #5E5E5E);
+  background-image: linear-gradient(#1E232D, #1E232D);
 }
 
 .sombra-lateral {
@@ -9,24 +9,157 @@
 
 .ws {
   font-family: 'Work Sans';
-  color: #1E232D;
-  font-weight: 16px;
+  color: white;
+  font-weight: 16px !important;
 }
+
 
 hr {
   color: #FFD513;
 }
 
+.sub_menu{
+  font-family: 'Work Sans';
+  margin-left: 7px;
+  font-size: 16px !important;
+}
+
+.blanco {
+ color: white !important;
+}
+
 .active {
-  background: #292E37;
-  color: #FFD513 !important;
+  background: #FFD513;
+  color: black !important;
+}
+
+.active .icon-y{
+  color: black;
+}
+
+.icon-y {
+  color: #FFD513;
 }
 
 .seguido{
   font-family: 'Work Sans';
-  color: #1E232D;
+  color: white;
 }
 
 .seguidos{
   padding-right: 10px;
+}
+
+.img_seguidor {
+    width: 24px;
+    height: 24px;
+    border-radius: 50em;
+    border: 2px solid yellow;
+    padding: 0px;
+}
+
+
+//---- desplegable
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #EAEBEF;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav{
+  width: 300px;
+}
+
+.nav__link{
+  color: white !important;
+  font-size: 16px !important;
+  font-family: 'Work Sans' !important;
+  display: block;
+  padding: 12px 0;
+  text-decoration: none;
+}
+
+.nav__link--inside{
+  border-radius: 6px ;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.nav__link--inside:hover{
+  background: #FFD513;
+  color: black !important;
+}
+
+.list{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0 16px 16px 0;
+  background: #fff;
+}
+
+.list__item{
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.list__item--click{
+  cursor: pointer;
+}
+
+.list__button{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 84%;
+  margin: 0 auto;
+  margin-top: 6px;
+}
+
+.arrow .list__arrow{
+  transform: rotate(90deg);
+}
+
+.list__arrow{
+  margin-left: auto;
+  transition: transform .3s;
+}
+
+
+.abrir{
+  width: 80%;
+  margin-left: auto;
+  border-left: 2px solid #303440;
+  list-style: none;
+  transition: height .4s;
+  height: 108px !important;
+}
+.cerrar{
+  width: 80%;
+  margin-left: auto;
+  border-left: 2px solid #303440;
+  list-style: none;
+  transition: height .4s;
+  height: 0 !important;
+}
+
+.list__show{
+  width: 80%;
+  margin-left: auto;
+  border-left: 2px solid #303440;
+  list-style: none;
+  transition: height .4s;
+  height: 0;
 }

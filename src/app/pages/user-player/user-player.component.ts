@@ -4,6 +4,7 @@ import { PlayerModel } from 'src/app/models/player';
 import { UserModel } from 'src/app/models/user';
 import { PostService } from 'src/app/services/post.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-player',
@@ -12,6 +13,7 @@ import { UserStorageService } from 'src/app/services/user-storage.service';
 })
 export class UserPlayerComponent implements OnInit {
 
+  public e=environment;
   page = 2;
   page1 = 3;
   active = 1;
@@ -22,12 +24,19 @@ export class UserPlayerComponent implements OnInit {
   public user: UserModel;
   public player: PlayerModel= new PlayerModel();;
   public imagen="assets/img/theme/team-4-800x800.jpg";
-  constructor(private route: ActivatedRoute, private ps:PostService, private uss: UserStorageService) { }
+  constructor(private route: ActivatedRoute, private ps:PostService, private uss: UserStorageService, private activatedRoute: ActivatedRoute) { 
+    //this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.getDatos();
+
+    this.activatedRoute.paramMap
+    .subscribe((params) => {
+      this.id = params.get('id');
+      console.log(this.id);
+      this.getDatos();
+    });
+    //this.id = this.route.snapshot.paramMap.get('id');
 
   }
   
@@ -45,8 +54,9 @@ export class UserPlayerComponent implements OnInit {
     this.ps.user_post(id).subscribe({
       next(data){
         self.post=data;
+        console.log(self.post)
         for (let i = 0; i < self.post.length; i++) {
-          self.post[i].user_data.imagen="https://api.ronnie.es/uploads/user/"+self.post[i].user_data.id+"/profile/"+self.post[i].user_data.picture;
+          //self.post[i].user_data.imagen="https://api.ronnie.es/uploads/user/"+self.post[i].user_data.id+"/profile/"+self.post[i].user_data.picture;
           self.post[i].post_data.video="https://api.ronnie.es/"+self.post[i].post_data.url;
         }
         console.log(self.post)

@@ -14,6 +14,8 @@ import { ScootingComponent } from '../../pages/scooting/scooting.component';
 import { PromoComponent } from '../../pages/promo/promo.component';
 import { UserPlayerComponent } from '../../pages/user-player/user-player.component';
 import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
+import { TeamComponent } from 'src/app/pages/team/team.component';
+import { CoachComponent } from 'src/app/pages/coach/coach.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -29,5 +31,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'scooting',       component: ScootingComponent },
     { path: 'promo',          component: PromoComponent },
     { path: 'user-player/:id',    component: UserPlayerComponent },
+    { path: 'team',           component: TeamComponent },
+    { path: 'coach',          component: CoachComponent },
     { path: 'subscription',   component: SubscriptionComponent },
 ];
