@@ -20,13 +20,13 @@ export class PostService {
       headers = headers.set('Authorization', 'Bearer '+this.user.token);
       //return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
       //return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit,{headers: headers})
-      return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit)
+      return this.http.get(this.e.apiUrl+'/posts/recents/home?limit='+limit)
   }
 
   scooting(): Observable<any> {
-    var limit=50;
+    var limit=50; 
     var timestamp=new Date(); 
-    return this.http.get(this.e.apiUrl+'/posts/private?limit='+limit)
+    return this.http.get(this.e.apiUrl+'/posts/recents/private?limit='+limit)
   }
 
   seguidores(): Observable<any> {
@@ -76,5 +76,10 @@ export class PostService {
     };
     return this.http.post(this.e.apiUrl+'/profile/follow',data)
   }
+
+  //https://api.ronnie.es/v1/posts/recents/home?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
+
+  //https://api.ronnie.es/v1/auth/token?user_type=club&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUucmFuZ2VsZEBob3RtYWlsLmNvbSIsInJvbGUiOiJjbHViIiwiaWF0IjoxNjU1NDA3NjQyLCJleHAiOjE2NTU0MDkwODJ9.VqVGrZ3f2wenXR2gB6l_acuTafqLFadzee5BMT5qnJo
+  //https://api.ronnie.es/v1/posts/recents/private?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
 
 }
