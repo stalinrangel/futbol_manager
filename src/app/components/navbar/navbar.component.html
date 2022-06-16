@@ -1,21 +1,35 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-  <div class="container-fluid" >
+  <div class="container-fluid row" >
     <!-- Brand -->
+    <div style="margin-left:30%">
     <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block color-gris" ></a>
+    </div>
     <!-- Form -->
-    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto buscar-margen">
-      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
-        <div class="input-group input-group-alternative buscar" >
-          <input class="form-control" placeholder="Buscar" type="text" >
-          <div class="i-icon">
-            <span ><i class="fas fa-search"></i></span>
+    <div class="fatima ">
+      <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto buscar-margen">
+        <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+          <div class="input-group input-group-alternative buscar" >
+            <input class="form-control" placeholder="Buscar" type="text" [(ngModel)]="filter" name="filter" style="color: black !important;" (ngModelChange)="search()">
+            <div class="i-icon" (click)="search()">
+              <span (click)="search()"><i class="fas fa-search"></i></span>
+            </div>
           </div>
         </div>
+      </form>
+      <div class="">
+        <ul class="list-group list-group-flush" style="width: 88%;">
+          <li class="list-group-item" *ngFor="let r of results">
+            <a routerLinkActive="active" class="nav-link blanco" [routerLink]="['/user-player',r.id]" (click)="limpiar()">
+              <img src="{{r.imagen}}" class="seguidos ws img_seguidor"> <span style="margin-left: 13px;">{{r.firstname}} {{r.lastname}}</span> 
+            </a>
+          </li>
+        </ul>
       </div>
-    </form>
+    </div>
+    
     <!-- User -->
-
-    <i class="far fa-bell campana"></i>
+    
+    <i class="far fa-bell campana" style="margin-top: 15px;"></i>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>

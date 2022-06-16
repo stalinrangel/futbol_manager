@@ -1,4 +1,5 @@
 export class PlayerModel {
+    public id:any;
     public account_plan:string;
     public account_verified:string;
     public birthday:string;
@@ -9,6 +10,7 @@ export class PlayerModel {
     public lastname:string;
     public phone:string;
     public picture:string;
+    public imagen:string;
     public player_club:string;
     public player_division:string;
     public player_foot:string;

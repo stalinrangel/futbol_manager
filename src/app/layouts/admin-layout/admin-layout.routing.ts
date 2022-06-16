@@ -16,6 +16,7 @@ import { UserPlayerComponent } from '../../pages/user-player/user-player.compone
 import { SubscriptionComponent } from '../../pages/subscription/subscription.component';
 import { TeamComponent } from 'src/app/pages/team/team.component';
 import { CoachComponent } from 'src/app/pages/coach/coach.component';
+import { VideoComponent } from 'src/app/pages/video/video.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -28,9 +29,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'users',          component: UsersComponent },
     { path: 'pays',           component: PaysComponent },
     { path: 'inbox',          component: InboxComponent },
-    { path: 'scooting',       component: ScootingComponent },
+    { path: 'scouting',       component: ScootingComponent },
     { path: 'promo',          component: PromoComponent },
     { path: 'user-player/:id',    component: UserPlayerComponent },
+    { path: 'video/:id',          component: VideoComponent },
     { path: 'team',           component: TeamComponent },
     { path: 'coach',          component: CoachComponent },
     { path: 'subscription',   component: SubscriptionComponent },

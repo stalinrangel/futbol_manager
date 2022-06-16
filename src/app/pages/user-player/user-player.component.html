@@ -1,4 +1,4 @@
-<div class="header pt-5 d-flex align-items-center" style="min-height: 300px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pt-3 d-flex align-items-center" style="min-height: 200px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
     <!-- Mask -->
     <span class="mask bg-gradient-primary opacity-8"></span>
     <!-- Header container -->
@@ -8,8 +8,11 @@
             <div class="div_headers">
                 <img src="{{imagen}}" alt="" class="imagen-player">
                 <h1 class="text-white">{{player.firstname}}</h1>
+                <button type="button" class="btn  btn-outline-primary my-4 ml-3" (click)="unfollow()" *ngIf="seguido">Eliminar</button>
+                <button type="button" class="btn btn-primary my-4 ml-3" (click)="follow()" placement="right"
+                ngbPopover="Has seguido al jugador">{{isfollow}}</button>
             </div>
-          
+            
           <!--a href="#!" class="btn btn-info">Edit profile</a-->
         </div>
       </div>
@@ -26,7 +29,7 @@
                         <div class="tab-content">
                             <div class="row">
                                 <div *ngFor="let item of post" class="col-3">
-                                    <video src="{{item.post_data.video}}"  controls class="v"></video><br>
+                                    <video src="{{item.post_data.video}}" class="v" (click)="ir(item.id, post)"></video><br>
                                     <div class="va">
                                       <img src="{{imagen}}" class="seguidos ws" class="vi">
                                       <p class="" href="" style="padding-left: 10px; font-size: 14px;">

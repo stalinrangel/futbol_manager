@@ -24,6 +24,8 @@ import { SubscriptionComponent } from '../../pages/subscription/subscription.com
 import { ScootingComponent } from '../../pages/scooting/scooting.component';
 import { TeamComponent } from 'src/app/pages/team/team.component';
 import { CoachComponent } from 'src/app/pages/coach/coach.component';
+import { VideoComponent } from 'src/app/pages/video/video.component';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -51,7 +53,8 @@ import { CoachComponent } from 'src/app/pages/coach/coach.component';
     UserPlayerComponent,
     SubscriptionComponent,
     TeamComponent,
-    CoachComponent
+    CoachComponent,
+    VideoComponent
   ]
 })
 

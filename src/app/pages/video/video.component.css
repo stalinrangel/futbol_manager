@@ -1,0 +1,71 @@
+.home-header {
+	background-color: white;
+    height: 76px;
+}
+
+.boton {
+	color: #1E232D;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	margin-right: 16px;
+	padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.re {
+	font-family: 'Work Sans';
+	color: #1E232D;
+	font-weight: 16px;
+  }
+
+.v {
+	width: 100%;
+    height: 73%;
+	max-height: 168px;  
+}
+.vide {
+    width: 100%;
+    min-height: 240px;
+    max-height: 600px;
+}
+
+.scroll {
+    overflow-y: auto;
+    height: 90vh;
+}
+
+.vi {
+	width: 36px; 
+	height: 36px;
+	margin-bottom: 10px;
+	border-radius: 100px;
+}
+.va {
+	display: flex;
+    align-items: center;
+    vertical-align: center !important;
+}
+
+.hrr {
+	margin-top: 1px;
+    margin-bottom: 20px;
+}
+
+
+.padding-tab {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.imagen-player {
+	height: 90px;
+    width: 90px;
+    border-radius: 100px;
+	margin-right: 25px;
+}
+.div_headers{
+	display: flex;
+	align-items: center;
+}

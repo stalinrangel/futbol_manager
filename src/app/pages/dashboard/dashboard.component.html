@@ -2,26 +2,35 @@
 <div class="row home-header">
 </div>
 
-<div class="container-fluid" style="background-color: #E5E5E5; height: 100vh;">
+<div class="container-fluid" style="background-color: #E5E5E5; height: 100%; min-height: 100vh;">
   <br>
   <a class="re">Filtrar por</a>
   <div class="row" >
     <div class="col-12">
-      <button type="button" class="btn btn-outline-primary my-4 boton">Jugadores</button>
+      <button type="button" class="btn btn-outline-primary my-4 boton">Sexo</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Posición</button>
-      <button type="button" class="btn btn-outline-primary my-4 boton">Edad</button>
+      <button type="button" class="btn btn-outline-primary my-4 boton" (click)="show_edad()">Edad</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Pierna</button>
-      <button type="button" class="btn btn-outline-primary my-4 boton">Altura</button>
+      <button type="button" class="btn btn-outline-primary my-4 boton" (click)="show_altura()">Altura</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Equipo</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Ciudad</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Provincia</button>
       <button type="button" class="btn btn-outline-primary my-4 boton">Pais</button>
+      <div [hidden]="!eshow">
+        Eliga un rango de edad:
+        <div id="edad"></div>
+      </div>
+      <div [hidden]="!ashow">
+        Eliga un rango de altura:
+        <div id="altura"></div>
+      </div>
     </div>
+    
   </div>
   <hr class="hrr">
   <div class="row" *ngIf="mostrar">
     <div *ngFor="let item of post" class="col-3">
-      <video src="{{item.post_data.video}}"  controls class="v"></video><br>
+      <video src="{{item.post_data.video}}"  class="v" (click)="ir(item.id, post)"></video><br>
       <div class="va">
         <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi" [routerLink]="['/user-player',item.user_data.id]">
         <p class="" [routerLink]="['/user-player',item.user_data.id]" style="padding-left: 10px; font-size: 14px;">

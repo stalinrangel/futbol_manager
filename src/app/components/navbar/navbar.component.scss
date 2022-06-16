@@ -5,6 +5,7 @@
 
 .buscar {
     width: 690px;
+    min-width: 300px;
     border-radius: 0px;
     border-color: #FFD513;
 }
@@ -30,3 +31,33 @@
   color: #1E232D;
 }
 
+.seguido{
+  font-family: 'Work Sans';
+  color: white;
+}
+
+.seguidos{
+  padding-right: 10px;
+}
+
+.img_seguidor {
+    width: 24px;
+    height: 24px;
+    border-radius: 50em;
+    border: 2px solid yellow;
+    padding: 0px;
+}
+.ws {
+  font-family: 'Work Sans';
+  color: black;
+  font-weight: 16px !important;
+}
+
+.fatima {
+  display:flex;
+  flex-direction: column;
+}
+
+.container-fluid {
+  align-items: flex-start;
+}

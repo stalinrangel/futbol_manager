@@ -4,6 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 import { UserModel } from 'src/app/models/user';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,14 +17,20 @@ export class NavbarComponent implements OnInit {
   public location: Location;
   public user: UserModel;
   public imagen="assets/img/theme/team-4-800x800.jpg";
-  constructor(location: Location,  private element: ElementRef, private router: Router, private uss: UserStorageService) {
+  public filter:any='';
+  public results:any=[];
+  constructor(location: Location,  private element: ElementRef, private router: Router, private uss: UserStorageService, private ps: PostService) {
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     this.user = this.uss.user;
-    this.imagen="https://api.ronnie.es/uploads/club/"+this.user.id+"/profile/"+this.user.logo;
+    if (this.user.logo==null) {
+      this.imagen="assets/img/manager/avatar_user.png";
+    }else{
+      this.imagen="https://api.ronnie.es/uploads/club/"+this.user.id+"/profile/"+this.user.logo;
+    }
     console.log(this.user);
   }
   getTitle(){
@@ -38,6 +45,36 @@ export class NavbarComponent implements OnInit {
         }
     }
     return 'Dashboard';
+  }
+
+  search(){
+    console.log(this.filter.length)
+    if (this.filter.length==0) {
+      this.results=[];
+    }else{
+      let fil='filter=firstname,LIKE,%'+this.filter+'%'+'&order=firstname,desc'+'&limit=10';
+      let self =this; 
+      console.log(fil)
+      this.ps.search(fil).subscribe({
+        next(data){
+          self.results=data;  
+          console.log(self.results); 
+          for (let i = 0; i < self.results.length; i++) {
+            if (self.results[i].picture!=null) {
+              self.results[i].imagen="https://api.ronnie.es/uploads/user/"+self.results[i].id+"/profile/"+self.results[i].picture;
+            }else{
+              self.results[i].imagen="assets/img/manager/avatar_user.png";
+            }
+          }
+        },error(err){
+          console.log(err);
+        }
+      })
+    }
+  }
+
+  limpiar(){
+    this.results=[];
   }
 
   signOut(){

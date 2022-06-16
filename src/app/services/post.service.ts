@@ -65,4 +65,16 @@ export class PostService {
     return this.http.post(this.e.apiUrl+'/posts/private',data,{headers: headers})
   }
 
+  search(filter): Observable<any> {
+  return this.http.get(this.e.apiUrl+'/profile/search/user?'+filter)
+  }
+
+  follow(id): Observable<any> {
+    let data = {
+      'user_id': id,
+      'user_type': 'user'
+    };
+    return this.http.post(this.e.apiUrl+'/profile/follow',data)
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerModel } from 'src/app/models/player';
 import { UserModel } from 'src/app/models/user';
 import { PostService } from 'src/app/services/post.service';
@@ -24,7 +24,9 @@ export class UserPlayerComponent implements OnInit {
   public user: UserModel;
   public player: PlayerModel= new PlayerModel();;
   public imagen="assets/img/theme/team-4-800x800.jpg";
-  constructor(private route: ActivatedRoute, private ps:PostService, private uss: UserStorageService, private activatedRoute: ActivatedRoute) { 
+  public seguido=false;
+  public isfollow='Seguir';
+  constructor(private route: ActivatedRoute, private router: Router, private ps:PostService, private uss: UserStorageService, private activatedRoute: ActivatedRoute) { 
     //this.route.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -73,10 +75,37 @@ export class UserPlayerComponent implements OnInit {
         console.log(data);
         self.player=data;
         self.imagen="https://api.ronnie.es/uploads/user/"+self.id+"/profile/"+self.player.picture;
+        self.player.imagen="https://api.ronnie.es/uploads/user/"+self.id+"/profile/"+self.player.picture;
+        self.player.id=this.id;
       },error(err){
         console.log(err);
       }
     })
   }
 
+  ir(id_post, posts){
+    console.log(id_post)
+    this.router.navigate(['/video/'+id_post, {post: JSON.stringify(posts),user: JSON.stringify(this.player)}]);
+  }
+
+  follow(){
+    let self=this;
+    this.ps.follow(self.id).subscribe({
+      next(data){
+        console.log(data);
+        if (self.isfollow=='Seguir') {
+          self.isfollow='Eliminar';
+        }else{
+          self.isfollow='Seguir';
+        }
+      },error(err){
+        console.log(err);
+      }
+    })
+    
+  }
+
+  unfollow(){
+
+  }
 }
