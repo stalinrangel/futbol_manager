@@ -1,35 +1,77 @@
 <div>
-    <div class="row home-header">
-    </div>
-    
-    <div class="container-fluid" style="background-color: #E5E5E5; height: 100vh;">
-      <br>
-      <a class="re">Filtrar por</a>
-      <div class="row" >
-        <div class="col-12">
-          <button type="button" class="btn btn-outline-primary my-4 boton">Jugadores</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Posición</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Edad</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Pierna</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Altura</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Equipo</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Ciudad</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Provincia</button>
-          <button type="button" class="btn btn-outline-primary my-4 boton">Pais</button>
+  <div class="row home-header">
+  </div>
+  
+  <div class="container-fluid" style="background-color: #E5E5E5; height: 100%; min-height: 100vh;">
+    <br>
+    <a class="re">Filtrar por</a>
+    <div class="row" >
+      <div class="col-12 my-4" style="display: flex">
+        <div class="col-1">
+          <button type="button" class="btn btn-outline-primary  boton" (click)="show_sexo()">Sexo</button>
+          <ul class="blu" [hidden]="!esexo">
+            <li class="bli" (click)="selec_sexo('M','Masculino')">Masculino</li>
+            <li class="bli" (click)="selec_sexo('F','Femenino')">Femenino</li>
+          </ul>
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-outline-primary boton" (click)="show_posicion()">Posición</button>
+          <ul class="blu" [hidden]="!eposicion">
+            <li class="bli" *ngFor="let p of positions" (click)="selec_posicion(p.id,p.name)">{{p.name}}</li>
+          </ul>
+        </div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary boton" (click)="show_edad()">Edad</button></div>
+        <div class="col-1">
+          <button type="button" class="btn btn-outline-primary  boton" (click)="show_pierna()">Pierna</button>
+          <ul class="blu" [hidden]="!epierna">
+            <li class="bli" (click)="selec_pierna('Derecho')">Derecho</li>
+            <li class="bli" (click)="selec_pierna('Zurdo')">Zurdo</li>
+            <li class="bli" (click)="selec_pierna('Diestro')">Diestro</li>
+          </ul>
+        </div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary  boton" (click)="show_altura()">Altura</button></div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Equipo</button></div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Ciudad</button></div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Provincia</button></div>
+        <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Pais</button></div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col-1"><button type="button" class="btn btn-primary  boton" (click)="set_filter()">Buscar</button></div>
+        
+      </div>
+      <div class="col-12">
+        <div [hidden]="!eshow">
+          Eliga un rango de edad:
+          <div id="edad"></div>
+        </div>
+        <div [hidden]="!ashow">
+          Eliga un rango de altura:
+          <div id="altura"></div>
         </div>
       </div>
-      <hr class="hrr">
-      <div class="row" *ngIf="mostrar">
-        <div *ngFor="let item of post" class="col-3">
-          <video src="{{item.post_data.video}}"  controls class="v"></video><br>
-          <div class="va">
-            <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi" [routerLink]="['/user-player',item.user_data.id]">
-            <p class="" [routerLink]="['/user-player',item.user_data.id]" style="padding-left: 10px; font-size: 14px;">
-                {{item.post_data.title}}<br>
-                {{item.user_data.firstname}} <i class="fas fa-check-circle"></i>
-            </p>
-          </div>
+  
+      <div class="col-12">
+        <button type="button" class="btn btn-sm btn-white"[hidden]="!val_sexo.name" (click)="delete_sexo()">{{val_sexo.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+        <button type="button" class="btn btn-sm btn-white" [hidden]="!val_posicion.name" (click)="delete_posicion()">{{val_posicion.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+        <button type="button" class="btn btn-sm btn-white" [hidden]="!val_edad.birthday_start" (click)="delete_edad()">{{val_edad.min}} | {{val_edad.max}}<i class="ni ni-fat-remove eliminar"></i></button>
+        <button type="button" class="btn btn-sm btn-white" [hidden]="!val_pierna" (click)="delete_pierna()">{{val_pierna}} <i class="ni ni-fat-remove eliminar"></i></button>
+        <button type="button" class="btn btn-sm btn-white" [hidden]="!val_altura.player_height_start" (click)="delete_altura()">{{val_altura.min}} | {{val_altura.max}} <i class="ni ni-fat-remove eliminar"></i></button>
+      </div>
+      
+    </div>
+    <hr class="hrr">
+    <div class="row" *ngIf="mostrar">
+      <div *ngFor="let item of post" class="col-3">
+        <video src="{{item.post_data.video}}"  class="v" (click)="ir(item.id, post)"></video><br>
+        <div class="va">
+          <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi" [routerLink]="['/user-player',item.user_data.id]">
+          <p class="" [routerLink]="['/user-player',item.user_data.id]" style="padding-left: 10px; font-size: 14px;">
+              {{item.post_data.title}}<br>
+              {{item.user_data.firstname}} <i class="fas fa-check-circle"></i>
+              
+          </p>
         </div>
       </div>
     </div>
-    
+  </div>
+  

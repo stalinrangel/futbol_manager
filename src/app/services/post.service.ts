@@ -15,18 +15,28 @@ export class PostService {
   private user= this.uss.user;
   home(): Observable<any> {
       var limit=50;
-      var timestamp=new Date();
-      let headers = new HttpHeaders();
-      headers = headers.set('Authorization', 'Bearer '+this.user.token);
-      //return this.http.get(this.e.apiUrl+'/profile/feed?limit='+limit+'&timestamp='+timestamp,{headers: headers})
-      //return this.http.get(this.e.apiUrl+'/posts/recents?limit='+limit,{headers: headers})
       return this.http.get(this.e.apiUrl+'/posts/recents/home?limit='+limit)
+  }
+
+  home_filter(data): Observable<any> {
+    var limit=50;
+    return this.http.get(this.e.apiUrl+'/posts/recents/home?limit='+limit+data)
+    //https://api.ronnie.es/v1/posts/recents/home?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
+  }
+
+  positions(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/position?')
   }
 
   scooting(): Observable<any> {
     var limit=50; 
     var timestamp=new Date(); 
     return this.http.get(this.e.apiUrl+'/posts/recents/private?limit='+limit)
+  }
+  scooting_filter(data): Observable<any> {
+    var limit=50; 
+    var timestamp=new Date(); 
+    return this.http.get(this.e.apiUrl+'/posts/recents/private?limit='+limit+data)
   }
 
   seguidores(): Observable<any> {

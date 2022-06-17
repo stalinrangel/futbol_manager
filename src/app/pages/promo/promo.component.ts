@@ -14,7 +14,7 @@ export class PromoComponent implements OnInit {
 
   ngOnInit() {
     let self=this;
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.p.scooting().subscribe({
         next(data){
           console.log(data);
@@ -29,7 +29,7 @@ export class PromoComponent implements OnInit {
           console.log(err);
         }
       })
-    }, 250); 
+    }, 250); */
   }
 
 }

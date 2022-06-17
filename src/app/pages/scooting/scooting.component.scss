@@ -12,6 +12,7 @@
     padding-left: 20px;
     padding-top: 6px;
     padding-bottom: 6px;
+	width: 100px;
 }
 
 .re {
@@ -40,4 +41,34 @@
 .hrr {
 	margin-top: 1px;
     margin-bottom: 20px;
+}
+
+.ws {
+	border-radius: 100px;
+}
+.blu {
+	position: absolute;
+    list-style: none;
+    padding: 0px;
+    width: max-content;
+    min-width: 100px;
+    background-color: #ffd513;
+	z-index: 9999;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	color: #1E232D;
+}
+
+li:hover{
+	background-color:#000000;
+}
+
+.bli{
+	padding: 10px;
+    border-top: 1px solid rgb(204,204,204);
+}
+
+.eliminar{
+	position: absolute;
+    top: -7px;
 }
