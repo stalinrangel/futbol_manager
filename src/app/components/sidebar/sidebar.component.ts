@@ -75,7 +75,6 @@ export class SidebarComponent implements OnInit {
     setTimeout(() => {
       this.ps.seguidores().subscribe({
         next(data){
-          console.log(data);
           self.seguidores=data;
           self.lista_seguidores=self.seguidores.user_list;
           for (let i = 0; i < self.lista_seguidores.length; i++) {
@@ -85,13 +84,34 @@ export class SidebarComponent implements OnInit {
               self.lista_seguidores[i].imagen="assets/img/manager/avatar_user.png";
             }
           }
-          console.log(self.lista_seguidores)
         },error(err){
           console.log(err);
         }
       })
     }, 250);
 
+  }
+
+  public reset(){
+    let self=this;
+    this.ps.seguidores().subscribe({
+      next(data){
+        alert('entro');
+        console.log(data);
+        self.seguidores=data;
+        self.lista_seguidores=self.seguidores.user_list;
+        for (let i = 0; i < self.lista_seguidores.length; i++) {
+          if (self.lista_seguidores[i].picture!=null) {
+            self.lista_seguidores[i].imagen="https://api.ronnie.es/uploads/user/"+self.lista_seguidores[i].id+"/profile/"+self.lista_seguidores[i].picture;
+          }else{
+            self.lista_seguidores[i].imagen="assets/img/manager/avatar_user.png";
+          }
+        }
+        console.log(self.lista_seguidores)
+      },error(err){
+        console.log(err);
+      }
+    })
   }
   public abrio:boolean=false;
   abrir(){

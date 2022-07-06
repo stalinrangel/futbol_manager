@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IdentityService } from 'src/app/services/identity.service';
 import { RegisterModel } from './models/register.model';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   public imagen:any="assets/img/manager/Combined-Shape.svg";
   public model:RegisterModel= new RegisterModel();
   public formData = new FormData();
-  constructor(private identityService: IdentityService, private router: Router) { }
+  constructor(private identityService: IdentityService, private router: Router, private t: ToastService) { }
 
   ngOnInit() {
   }
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
  register(){
 
   if (this.model.password!=this.model.rpassword) {
-    alert("Las contrasenas no coinciden");
+    //alert("Las contrasenas no coinciden");
+    this.t.showWarning("Las contrasenas no coinciden");
   }
 
   this.formData.append("email", this.model.email);
@@ -66,9 +68,12 @@ export class RegisterComponent implements OnInit {
   this.identityService.signup(this.formData).subscribe({
     next(data){
       console.log(data);
+      self.t.showSuccess('Registrado con éxito');
+      self.t.showInfo('Revisa tu correo y introduce el codigo de activación');
       self.router.navigate(['/activar']);
     },error(err){
       console.log(err);
+      self.t.showError(err.error.err);
     }
   })
  }

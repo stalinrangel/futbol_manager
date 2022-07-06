@@ -15,12 +15,12 @@ export class PostService {
   private user= this.uss.user;
   home(): Observable<any> {
       var limit=50;
-      return this.http.get(this.e.apiUrl+'/posts/recents/home?limit='+limit)
+      return this.http.get(this.e.apiUrl+'/post/recents/home?limit='+limit)
   }
 
   home_filter(data): Observable<any> {
     var limit=50;
-    return this.http.get(this.e.apiUrl+'/posts/recents/home?limit='+limit+data)
+    return this.http.get(this.e.apiUrl+'/post/recents/home?limit='+limit+data)
     //https://api.ronnie.es/v1/posts/recents/home?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
   }
 
@@ -31,12 +31,12 @@ export class PostService {
   scooting(): Observable<any> {
     var limit=50; 
     var timestamp=new Date(); 
-    return this.http.get(this.e.apiUrl+'/posts/recents/private?limit='+limit)
+    return this.http.get(this.e.apiUrl+'/post/recents/private?limit='+limit)
   }
   scooting_filter(data): Observable<any> {
     var limit=50; 
     var timestamp=new Date(); 
-    return this.http.get(this.e.apiUrl+'/posts/recents/private?limit='+limit+data)
+    return this.http.get(this.e.apiUrl+'/post/recents/private?limit='+limit+data)
   }
 
   seguidores(): Observable<any> {
@@ -72,7 +72,7 @@ export class PostService {
   send_post(data): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Bearer '+this.user.token);
-    return this.http.post(this.e.apiUrl+'/posts/private',data,{headers: headers})
+    return this.http.post(this.e.apiUrl+'/post/private',data,{headers: headers})
   }
 
   search(filter): Observable<any> {
@@ -87,9 +87,69 @@ export class PostService {
     return this.http.post(this.e.apiUrl+'/profile/follow',data)
   }
 
-  //https://api.ronnie.es/v1/posts/recents/home?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
+  clubs(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/profile/search/club?')
+  }
 
-  //https://api.ronnie.es/v1/auth/token?user_type=club&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUucmFuZ2VsZEBob3RtYWlsLmNvbSIsInJvbGUiOiJjbHViIiwiaWF0IjoxNjU1NDA3NjQyLCJleHAiOjE2NTU0MDkwODJ9.VqVGrZ3f2wenXR2gB6l_acuTafqLFadzee5BMT5qnJo
-  //https://api.ronnie.es/v1/posts/recents/private?player_height_start=1.80&player_height_end=1.90&birthday_start=1988-01-02&birthday_end=1989-01-02
+  country(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/country')
+  }
 
+  state(id): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/country/ES')
+  }
+
+  province(id): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/country/ES/'+id)
+  }
+
+  divisions(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/divisions?country=ES')
+  }
+  
+  categories(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/categories?country=ES')
+  }
+
+  section(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/club/section')
+  }
+
+  section_id(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/club/section/1')
+  }
+
+  create_section(data): Observable<any> {
+    return this.http.post(this.e.apiUrl+'/club/section',data)
+  }
+
+  club_players(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/club/players')
+  }
+  club_coach(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/club/players?type=trainer&club='+this.uss.user.id)
+  }
+  
+  trainers(): Observable<any> {
+    //return this.http.get(this.e.apiUrl+'/trainer/club/'+this.uss.user.id)
+    return this.http.get(this.e.apiUrl+'/trainer')
+  }
+
+  add_club_players(): Observable<any> {
+    let data={
+      "category": 1,
+      "section": 1,
+      "division": 1,
+      "user_type": "user",
+      "user_id": 16,
+      "firstname": "cris",
+      "lastname": "rrr"
+    }
+    return this.http.post(this.e.apiUrl+'/club/players',data)
+  }
+
+  notifications(): Observable<any> {
+    return this.http.get(this.e.apiUrl+'/profile/notifications')
+  }
+  
 }

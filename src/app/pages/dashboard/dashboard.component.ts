@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import noUiSlider from "nouislider";
 import wNumb from 'wnumb';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,15 @@ export class DashboardComponent implements OnInit {
 
   public eposicion=false;
   public val_posicion:any={
+    id:null,
+    name:null
+  };
+
+  public s_team='';
+  public original_team=[];
+  public team=[];
+  public eteam=false;
+  public val_team:any={
     id:null,
     name:null
   };
@@ -51,38 +61,78 @@ export class DashboardComponent implements OnInit {
     max: null
   };
 
+  public countrys:any=[];
+  public states:any=[];
+  public provinces:any=[];
+
+  public s_countrys='';
+  public s_states='';
+  public s_provinces='';
   
-  constructor(private p:PostService, private router: Router){}
+  public ecountrys=false;
+  public estates=false;
+  public eprovinces=false;
+  
+  public val_countrys:any={
+    id:null,
+    name:null
+  };
+  public val_states:any={
+    id:null,
+    name:null
+  };
+  public val_provinces:any={
+    id:null,
+    name:null
+  };
+  
+  constructor(private p:PostService, private router: Router, private toast: ToastService){}
 
   ngOnInit() {
     let self=this;
     //setTimeout(() => {
       this.p.home().subscribe({
         next(data){
-          console.log(data);
+          //console.log(data);
           self.post=data;
           for (let i = 0; i < self.post.length; i++) {
             self.post[i].user_data.imagen="https://api.ronnie.es/uploads/user/"+self.post[i].user_data.id+"/profile/"+self.post[i].user_data.picture;
             self.post[i].post_data.video="https://api.ronnie.es/"+self.post[i].post_data.url;
+            self.post[i].post_data.mini="https://api.ronnie.es/"+self.post[i].post_data.thumbnail;
+            
           }
           console.log(self.post)
           self.mostrar=true;
         },error(err){
           console.log(err);
+          self.toast.showError(err.error.err);
         }
       })
 
       this.p.positions().subscribe({
         next(data){
-          console.log(data);
+          //console.log(data);
           self.positions=data;
         },error(err){
           console.log(err);
+          self.toast.showError(err.error.err);
+        }
+      })
+
+      this.p.clubs().subscribe({
+        next(data){
+          //console.log(data);
+          //self.team=data;
+          self.original_team=data;
+        },error(err){
+          console.log(err);
+          self.toast.showError(err.error.err);
         }
       })
     //}, 250);
-
-    
+    setTimeout(() => {
+      this.gets();
+    }, 1250);
   }
 
   ngAfterViewInit(){
@@ -167,6 +217,77 @@ export class DashboardComponent implements OnInit {
       
   }
 
+  gets(){
+    let self=this;
+    this.p.country().subscribe({
+      next(data){
+        console.log(data);
+        //this.countrys=data;
+        self.countrys.push({
+          "code": "ES",
+          "dial_code": "+34",
+          "name_en": "España",
+          "name_es": "España",
+        })
+      },error(err){
+        console.log(err);
+      }
+    })
+
+    /*this.p.add_club_players().subscribe({
+      next(data){
+        console.log(data);
+      },error(err){
+        console.log(err);
+      }
+    })
+    */
+  }
+
+  get_state(id){
+    let self=this;
+    this.p.state(id).subscribe({
+      next(data){
+        console.log(data);
+        self.states=data;
+      },error(err){
+        console.log(err);
+      }
+    })
+  }
+
+  get_province(id){
+    let self=this;
+    this.p.province(id).subscribe({
+      next(data){
+        console.log(data);
+        self.provinces=data;
+      },error(err){
+        console.log(err);
+      }
+    })
+  }
+
+  search_team() {
+    console.log(this.s_team)
+
+    this.team = this.original_team.filter(item => item.name.toLowerCase().indexOf(this.s_team.toLowerCase()) !== -1);
+  }
+
+  get_team(id){
+    console.log(id)
+    for (let i = 0; i < this.original_team.length; i++) {
+      if (this.original_team[i].id==id) {
+        this.val_team={
+          id:id,
+          name:this.original_team[i].name
+        };
+        this.eteam=false;
+      }
+      
+    }
+  }
+
   show_sexo(){
     if (this.esexo==true){this.esexo=false;}
     else{ this.esexo=true;}
@@ -174,6 +295,10 @@ export class DashboardComponent implements OnInit {
   show_posicion(){
     if (this.eposicion==true){this.eposicion=false;}
     else{ this.eposicion=true;}
+  }
+  show_team(){
+    if (this.eteam==true){this.eteam=false;}
+    else{ this.eteam=true;}
   }
   show_pierna(){
     if (this.epierna==true){this.epierna=false;}
@@ -189,6 +314,18 @@ export class DashboardComponent implements OnInit {
     console.log(this.altura_min,this.altura_max,this.ashow)
     if (this.ashow==true){this.ashow=false;}
     else{ this.ashow=true;}
+  }
+  show_countrys(){
+    if (this.ecountrys==true){this.ecountrys=false;}
+    else{ this.ecountrys=true;}
+  }
+  show_states(){
+    if (this.estates==true){this.estates=false;}
+    else{ this.estates=true;}
+  }
+  show_provinces(){
+    if (this.eprovinces==true){this.eprovinces=false;}
+    else{ this.eprovinces=true;}
   }
 
   selec_sexo(val,val2){
@@ -223,8 +360,23 @@ export class DashboardComponent implements OnInit {
     };
     this.eposicion=false;
   }
+  selec_team(val,val2){
+    console.log(val)
+    this.val_team={
+      id:val,
+      name:val2
+    };
+    this.eteam=false;
+  }
   delete_posicion(){
     this.val_posicion={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
+  delete_team(){
+    this.val_team={
       id:null,
       name:null
     };
@@ -252,6 +404,85 @@ export class DashboardComponent implements OnInit {
     this.ashow=false;
     this.set_filter();
   }
+  
+  get_countrys(id){
+    this.selec_countrys(1,"España");
+  }
+  selec_countrys(val,val2){
+    console.log(val)
+    this.val_countrys={
+      id:val,
+      name:val2
+    };
+    this.ecountrys=false;
+    this.get_state(val);
+  }
+  delete_countrys(){
+    this.val_countrys={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
+
+  get_states(id){
+    for (let i = 0; i < this.states.length; i++) {
+      if (this.states[0]=id) {
+        this.selec_states(id,id);
+      }
+    }
+  }
+  selec_states(val,val2){
+    console.log(val)
+    this.val_states={
+      id:val,
+      name:val2
+    };
+    this.estates=false;
+    this.get_province(val);
+  }
+  delete_states(){
+    this.val_countrys={
+      id:null,
+      name:null
+    };
+    this.val_states={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
+
+  get_provinces(id){
+    for (let i = 0; i < this.provinces.length; i++) {
+      if (this.provinces[0]=id) {
+        this.selec_provinces(id,id);
+      }
+    }
+  }
+  selec_provinces(val,val2){
+    console.log(val)
+    this.val_provinces={
+      id:val,
+      name:val2
+    };
+    this.eprovinces=false;
+  }
+  delete_provinces(){
+    this.val_countrys={
+      id:null,
+      name:null
+    };
+    this.val_states={
+      id:null,
+      name:null
+    };
+    this.val_provinces={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
 
   set_filter(){
     let data='';
@@ -276,6 +507,18 @@ export class DashboardComponent implements OnInit {
     if (this.val_posicion.id) {
       data=data+'&player_position='+this.val_posicion.id;
     }
+    if (this.val_team.id) {
+      data=data+'&player_club='+this.val_team.id;
+    }
+    if (this.val_countrys.id) {
+      data=data+'&country='+this.val_countrys.id;
+    }
+    if (this.val_states.id) {
+      data=data+'&state='+this.val_states.id;
+    }
+    if (this.val_provinces.id) {
+      data=data+'&province='+this.val_provinces.id;
+    }
     console.log(data);
     let self=this;
     this.p.home_filter(data).subscribe({
@@ -290,6 +533,7 @@ export class DashboardComponent implements OnInit {
         self.mostrar=true;
       },error(err){
         console.log(err);
+        self.toast.showError(err.error.err)
       }
     })
   }
@@ -314,7 +558,15 @@ export class DashboardComponent implements OnInit {
   ir(id_post, posts){
     console.log(id_post)
     console.log(posts)
-    this.router.navigate(['/video/'+id_post, {post: JSON.stringify(posts),user: JSON.stringify(posts[0].user_data)}]);
+    let user:any;
+    for (let i = 0; i < posts.length; i++) {
+      if (posts[i].id==id_post) {
+        user=posts[i].user_data
+      }
+      
+    }
+    console.log(user)
+    this.router.navigate(['/video/'+id_post, {post: JSON.stringify(posts),user: JSON.stringify(user)}]);
   }
 
 }

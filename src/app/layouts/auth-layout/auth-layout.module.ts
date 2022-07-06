@@ -9,11 +9,13 @@ import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { FileDragNDropDirective } from 'src/app/pages/register/file-drag-n-drop.directive';
 import { ActivarComponent } from 'src/app/pages/activar/activar.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
     // NgbModule
   ],
   declarations: [

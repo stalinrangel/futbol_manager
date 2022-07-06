@@ -20,6 +20,10 @@ export class IdentityService {
     return this.http.post(this.e.apiUrl+'/auth/signup', model)
   }
 
+  edit(model: any): Observable<any> {
+    return this.http.patch(this.e.apiUrl+'/profile', model)
+  }
+
   activate(token: any): Observable<any> {
     var send = {
       "user_type": "club",
@@ -29,6 +33,7 @@ export class IdentityService {
   }
 
   refresh(token: any): Observable<any> {
+    console.log(token)
     var send = {
       "user_type": "club",
       "token": token

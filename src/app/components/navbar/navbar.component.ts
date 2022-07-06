@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     }else{
       this.imagen="https://api.ronnie.es/uploads/club/"+this.user.id+"/profile/"+this.user.logo;
     }
-    console.log(this.user);
+    //console.log(this.user);
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());

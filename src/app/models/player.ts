@@ -20,4 +20,5 @@ export class PlayerModel {
     public province:string;
     public state:string;
     public stripe_customer:string;
+    public isFollowing:any;
 }

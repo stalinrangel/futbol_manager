@@ -17,6 +17,7 @@ import { SubscriptionComponent } from '../../pages/subscription/subscription.com
 import { TeamComponent } from 'src/app/pages/team/team.component';
 import { CoachComponent } from 'src/app/pages/coach/coach.component';
 import { VideoComponent } from 'src/app/pages/video/video.component';
+import { CategoriesComponent } from 'src/app/pages/categories/categories.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -36,4 +37,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'team',           component: TeamComponent },
     { path: 'coach',          component: CoachComponent },
     { path: 'subscription',   component: SubscriptionComponent },
+    { path: 'categories',   component: CategoriesComponent },
 ];

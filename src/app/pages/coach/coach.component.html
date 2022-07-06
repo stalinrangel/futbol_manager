@@ -1,1 +1,61 @@
-<p>coach works!</p>
+<div>
+	<div class="row home-header">
+	</div>
+	<div class="container-fluid" style="background-color: #E5E5E5; height: 100%; min-height: 100vh;">
+		<br>
+        <span class="categorias">ENTRENADORES</span>
+		<div class="row jugadores" >
+			<div class="col-md-12">
+				<img class="imgRedonda" src="assets/img/manager/upload.png">
+			</div>
+			<div class="col-md-15">
+				<input class="name-jugador" type="text" name="name" [ngModel]="jugador.name" placeholder="Nombre del entrenador">
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="jugador.category">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="sec_selec" [(ngModel)]="jugador.section">
+					<option [value]="s.id" *ngFor="let s of sections">{{s.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-div" name="div_selec" [(ngModel)]="jugador.division">
+					<option [value]="d.id" *ngFor="let d of divisions">{{d.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-primary my-4" style="margin-left: 88%;" (click)="create()">Nuevo entrenador</button>
+		</div>
+        <br>
+		<br>
+		<span class="categorias">INTEGRANTES</span>
+		<br>
+		<div class="row jugadores" *ngFor="let p of trainers">
+			<div class="col-md-12">
+				<img class="imgRedonda" src="{{p.user_data.imagen}}">
+			</div>
+			<div class="col-md-15">
+				<input class="name-jugador" type="text" name="name" [ngModel]="p.user_data.firstname">
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="p.category.id">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="sec_selec" [(ngModel)]="p.section.id">
+					<option [value]="s.id" *ngFor="let s of sections">{{s.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-div" name="div_selec" [(ngModel)]="p.division.id">
+					<option [value]="d.id" *ngFor="let d of divisions">{{d.name}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

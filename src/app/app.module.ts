@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 //import { CustomRouteReuseStrategy } from './providers/reuse-strategy';
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot(),
   ],
   declarations: [
     AppComponent,

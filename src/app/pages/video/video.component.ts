@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerModel } from 'src/app/models/player';
 import { UserModel } from 'src/app/models/user';
 import { PostService } from 'src/app/services/post.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-video',
@@ -25,7 +26,7 @@ export class VideoComponent implements OnInit {
   active1 = 1;
   active2 = 1;
   public video:any;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private ps:PostService) { }
+  constructor(private t: ToastService,private activatedRoute: ActivatedRoute, private router: Router, private ps:PostService) { }
 
   ngOnInit(): void {
     let self=this;
@@ -33,8 +34,8 @@ export class VideoComponent implements OnInit {
     .subscribe((params) => {
       this.id = params.get('id');
       console.log(this.id);
-      console.log(self.activatedRoute.snapshot.paramMap.get('post'));
-      console.log(self.activatedRoute.snapshot.paramMap.get('user'));
+      //console.log(self.activatedRoute.snapshot.paramMap.get('post'));
+      //console.log(self.activatedRoute.snapshot.paramMap.get('user'));
       this.post=JSON.parse(self.activatedRoute.snapshot.paramMap.get('post'));
       this.player=JSON.parse(self.activatedRoute.snapshot.paramMap.get('user'));
       for (let i = 0; i < this.post.length; i++) {
@@ -100,11 +101,22 @@ export class VideoComponent implements OnInit {
     this.ps.follow(self.id).subscribe({
       next(data){
         console.log(data);
-        if (self.isfollow=='Seguir') {
-          self.isfollow='Eliminar';
-        }else{
-          self.isfollow='Seguir';
-        }
+        self.player.isFollowing=true;
+        self.t.showInfo(data.msg)
+      },error(err){
+        console.log(err);
+      }
+    })
+    
+  }
+
+  unfollow(){
+    let self=this;
+    this.ps.follow(self.id).subscribe({
+      next(data){
+        console.log(data);
+        self.player.isFollowing=false;
+        self.t.showInfo(data.msg)
       },error(err){
         console.log(err);
       }

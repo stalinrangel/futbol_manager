@@ -25,6 +25,8 @@ import { ScootingComponent } from '../../pages/scooting/scooting.component';
 import { TeamComponent } from 'src/app/pages/team/team.component';
 import { CoachComponent } from 'src/app/pages/coach/coach.component';
 import { VideoComponent } from 'src/app/pages/video/video.component';
+import { CategoriesComponent } from 'src/app/pages/categories/categories.component';
+
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -54,7 +56,8 @@ import { VideoComponent } from 'src/app/pages/video/video.component';
     SubscriptionComponent,
     TeamComponent,
     CoachComponent,
-    VideoComponent
+    VideoComponent,
+    CategoriesComponent
   ]
 })
 

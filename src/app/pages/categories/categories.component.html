@@ -1,0 +1,35 @@
+<div>
+	<div class="row home-header">
+	</div>
+	<div class="container-fluid" style="background-color: #E5E5E5; height: 100%; min-height: 100vh;">
+		<br>
+        <span class="categorias">Secciones</span>
+		<div class="row jugadores" >
+			<div class="col-6">
+				<input class="name-jugador" type="text" name="name" [(ngModel)]="jugador.name" placeholder="Nombre de la sección">
+			</div>
+			<div class="col-6">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="jugador.category">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-primary my-4" style="margin-left: 88%;" (click)="create()">Nueva sección</button>
+		</div>
+        <br>
+		<br>
+		<span class="categorias">SECCIONES ASOCIADAS</span>
+		<br>
+		<div class="row jugadores" *ngFor="let s of sections">
+			<div class="col-6">
+				<input class="name-jugador" type="text" name="name" [ngModel]="s.name">
+			</div>
+			<div class="col-6">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="s.category_id">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

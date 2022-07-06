@@ -3,8 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerModel } from 'src/app/models/player';
 import { UserModel } from 'src/app/models/user';
 import { PostService } from 'src/app/services/post.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-user-player',
@@ -26,7 +28,7 @@ export class UserPlayerComponent implements OnInit {
   public imagen="assets/img/theme/team-4-800x800.jpg";
   public seguido=false;
   public isfollow='Seguir';
-  constructor(private route: ActivatedRoute, private router: Router, private ps:PostService, private uss: UserStorageService, private activatedRoute: ActivatedRoute) { 
+  constructor(private t: ToastService, private route: ActivatedRoute, private router: Router, private ps:PostService, private uss: UserStorageService, private activatedRoute: ActivatedRoute) { 
     //this.route.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -93,11 +95,9 @@ export class UserPlayerComponent implements OnInit {
     this.ps.follow(self.id).subscribe({
       next(data){
         console.log(data);
-        if (self.isfollow=='Seguir') {
-          self.isfollow='Eliminar';
-        }else{
-          self.isfollow='Seguir';
-        }
+        self.player.isFollowing=true;
+        self.t.showInfo(data.msg)
+        this.toast.reset_sidebar();
       },error(err){
         console.log(err);
       }
@@ -106,6 +106,15 @@ export class UserPlayerComponent implements OnInit {
   }
 
   unfollow(){
-
+    let self=this;
+    this.ps.follow(self.id).subscribe({
+      next(data){
+        console.log(data);
+        self.player.isFollowing=false;
+        self.t.showInfo(data.msg)
+      },error(err){
+        console.log(err);
+      }
+    })
   }
 }

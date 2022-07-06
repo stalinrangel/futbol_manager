@@ -35,6 +35,7 @@ export class UserStorageService {
   }
 
   set(object):void{
+    console.log(object)
     localStorage.setItem(
       this.key,
       JSON.stringify(object)

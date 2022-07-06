@@ -1,0 +1,1 @@
+(self.webpackChunkargon_dashboard_angular=self.webpackChunkargon_dashboard_angular||[]).push([[592],{8510:function(n,u,a){"use strict";a.d(u,{J:function(){return r}});var r=function(){return function(){this.user_type="club"}}()}}]);

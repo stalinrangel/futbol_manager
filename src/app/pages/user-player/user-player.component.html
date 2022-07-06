@@ -8,9 +8,8 @@
             <div class="div_headers">
                 <img src="{{imagen}}" alt="" class="imagen-player">
                 <h1 class="text-white">{{player.firstname}}</h1>
-                <button type="button" class="btn  btn-outline-primary my-4 ml-3" (click)="unfollow()" *ngIf="seguido">Eliminar</button>
-                <button type="button" class="btn btn-primary my-4 ml-3" (click)="follow()" placement="right"
-                ngbPopover="Has seguido al jugador">{{isfollow}}</button>
+                <button type="button" class="btn btn-primary my-4 ml-3" (click)="follow()" [hidden]="player.isFollowing">Seguir</button>
+                <button type="button" class="btn btn-primary my-4 ml-3" (click)="unfollow()" [hidden]="!player.isFollowing">Eliminar</button>
             </div>
             
           <!--a href="#!" class="btn btn-info">Edit profile</a-->

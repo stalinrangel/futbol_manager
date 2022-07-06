@@ -24,16 +24,34 @@
       <div class="col-1">
         <button type="button" class="btn btn-outline-primary  boton" (click)="show_pierna()">Pierna</button>
         <ul class="blu" [hidden]="!epierna">
-          <li class="bli" (click)="selec_pierna('Derecho')">Derecho</li>
-          <li class="bli" (click)="selec_pierna('Zurdo')">Zurdo</li>
           <li class="bli" (click)="selec_pierna('Diestro')">Diestro</li>
+          <li class="bli" (click)="selec_pierna('Zurdo')">Zurdo</li>
+          <li class="bli" (click)="selec_pierna('Ambidiestro')">Ambidiestro</li>
         </ul>
       </div>
       <div class="col-1"><button type="button" class="btn btn-outline-primary  boton" (click)="show_altura()">Altura</button></div>
-      <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Equipo</button></div>
-      <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Ciudad</button></div>
-      <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Provincia</button></div>
-      <div class="col-1"><button type="button" class="btn btn-outline-primary  boton">Pais</button></div>
+      <div class="col-1">
+        <button type="button" class="btn btn-outline-primary  boton" (click)="show_team()">Equipo</button>
+        <select class="selec_cate" name="cat_selec" (change)="get_team($event.target.value)" [hidden]="!eteam">
+          <option [value]="p.id" *ngFor="let p of original_team">{{p.name}}</option>
+        </select>
+      </div>
+      <div class="col-1"><button type="button" class="btn btn-outline-primary  boton" (click)="show_countrys()">País</button>
+        <select class="selec_cate" name="country_selec" (click)="get_countrys($event.target.value)" [hidden]="!ecountrys">
+          <option [value]="c.id" *ngFor="let c of countrys">{{c.name_es}}</option>
+        </select>
+      </div>
+      <div class="col-1"><button type="button" class="btn btn-outline-primary boton-xl" (click)="show_states()">Comunidad</button>
+        <select class="selec_cate-xl" name="country_state" (change)="get_states($event.target.value)" [hidden]="!estates">
+          <option [value]="st" *ngFor="let st of states">{{st}}</option>
+        </select>
+      </div>
+      <div class="col-1"><button type="button" class="btn btn-outline-primary boton" (click)="show_provinces()">Provincia</button>
+        <select class="selec_cate" name="country_provin" (click)="get_provinces($event.target.value)" [hidden]="!eprovinces">
+          <option [value]="pr" *ngFor="let pr of provinces">{{pr}}</option>
+        </select>
+      </div>
+      
       <div class="col-1"></div>
       <div class="col-1"></div>
       <div class="col-1"><button type="button" class="btn btn-primary  boton" (click)="set_filter()">Buscar</button></div>
@@ -49,20 +67,32 @@
         <div id="altura"></div>
       </div>
     </div>
-
+    <div [hidden]="true">
+      <label>Equipos:</label>
+      <input class="form-control" placeholder="Buscar" type="text" [(ngModel)]="s_team" name="s_team" style="color: black !important;" (ngModelChange)="search_team()">
+      <ul class="blu" [hidden]="!eteam">
+        <li class="bli" *ngFor="let p of team" (click)="selec_team(p.id,p.name)">{{p.name}}</li>
+      </ul>
+      
+    </div>
     <div class="col-12">
       <button type="button" class="btn btn-sm btn-white"[hidden]="!val_sexo.name" (click)="delete_sexo()">{{val_sexo.name}} <i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_posicion.name" (click)="delete_posicion()">{{val_posicion.name}} <i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_edad.birthday_start" (click)="delete_edad()">{{val_edad.min}} | {{val_edad.max}}<i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_pierna" (click)="delete_pierna()">{{val_pierna}} <i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_altura.player_height_start" (click)="delete_altura()">{{val_altura.min}} | {{val_altura.max}} <i class="ni ni-fat-remove eliminar"></i></button>
+      <button type="button" class="btn btn-sm btn-white" [hidden]="!val_team.name" (click)="delete_team()">{{val_team.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+      <button type="button" class="btn btn-sm btn-white" [hidden]="!val_countrys.name" (click)="delete_countrys()">{{val_countrys.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+      <button type="button" class="btn btn-sm btn-white" [hidden]="!val_states.name" (click)="delete_states()">{{val_states.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+      <button type="button" class="btn btn-sm btn-white" [hidden]="!val_provinces.name" (click)="delete_provinces()">{{val_provinces.name}} <i class="ni ni-fat-remove eliminar"></i></button>
     </div>
     
   </div>
   <hr class="hrr">
   <div class="row" *ngIf="mostrar">
     <div *ngFor="let item of post" class="col-3">
-      <video src="{{item.post_data.video}}"  class="v" (click)="ir(item.id, post)"></video><br>
+      <!--video src="{{item.post_data.video}}"  class="v" (click)="ir(item.id, post)"></video><br-->
+      <img src="{{item.post_data.mini}}" class="v" alt="ronnie">
       <div class="va">
         <img src="{{item.user_data.imagen}}" class="seguidos ws" class="vi" [routerLink]="['/user-player',item.user_data.id]">
         <p class="" [routerLink]="['/user-player',item.user_data.id]" style="padding-left: 10px; font-size: 14px;">

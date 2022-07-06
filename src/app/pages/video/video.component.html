@@ -8,9 +8,8 @@
             <div class="div_headers">
                 <img src="{{player.imagen}}" alt="" class="imagen-player">
                 <h1 class="text-white">{{player.firstname}}</h1>
-                <button type="button" class="btn  btn-outline-primary my-4 ml-3" (click)=" follow()" *ngIf="seguido">Eliminar</button>
-                <button type="button" class="btn btn-primary my-4 ml-3" (click)="follow()" placement="right"
-                ngbPopover="Has seguido al jugador">{{isfollow}}</button>
+                <button type="button" class="btn btn-primary my-4 ml-3" (click)="follow()" [hidden]="player.isFollowing">Seguir</button>
+                <button type="button" class="btn btn-primary my-4 ml-3" (click)="unfollow()" [hidden]="!player.isFollowing">Eliminar</button>
             </div>
             
           <!--a href="#!" class="btn btn-info">Edit profile</a-->
@@ -21,7 +20,7 @@
   <div class="container-fluid" style="height: 100vh;">
     <div class="row pt-4">
         <div class="col-lg-10">
-            <video src="{{video.post_data.video}}" class="vide" controls></video><br>
+            <video src="{{video.post_data.video}}" class="vide" autoplay controls></video><br>
             <div class="va">
                 <img src="{{player.imagen}}" class="seguidos ws" class="vi">
                 <p class="" href="" style="padding-left: 10px; font-size: 14px;">

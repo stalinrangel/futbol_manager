@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import noUiSlider from "nouislider";
 import wNumb from 'wnumb';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-scooting',
@@ -25,6 +26,13 @@ export class ScootingComponent implements OnInit {
 
   public eposicion=false;
   public val_posicion:any={
+    id:null,
+    name:null
+  };
+
+  public team=[];
+  public eteam=false;
+  public val_team:any={
     id:null,
     name:null
   };
@@ -53,7 +61,7 @@ export class ScootingComponent implements OnInit {
   };
 
   
-  constructor(private p:PostService, private router: Router){}
+  constructor(private p:PostService, private router: Router, private toast: ToastService){}
 
   ngOnInit() {
     let self=this;
@@ -79,6 +87,16 @@ export class ScootingComponent implements OnInit {
           self.positions=data;
         },error(err){
           console.log(err);
+        }
+      })
+
+      this.p.clubs().subscribe({
+        next(data){
+          console.log(data);
+          self.team=data;
+        },error(err){
+          console.log(err);
+          self.toast.showError(err.error.err);
         }
       })
     //}, 250);
@@ -176,6 +194,10 @@ export class ScootingComponent implements OnInit {
     if (this.eposicion==true){this.eposicion=false;}
     else{ this.eposicion=true;}
   }
+  show_team(){
+    if (this.eteam==true){this.eteam=false;}
+    else{ this.eteam=true;}
+  }
   show_pierna(){
     if (this.epierna==true){this.epierna=false;}
     else{ this.epierna=true;}
@@ -224,8 +246,23 @@ export class ScootingComponent implements OnInit {
     };
     this.eposicion=false;
   }
+  selec_team(val,val2){
+    console.log(val)
+    this.val_team={
+      id:val,
+      name:val2
+    };
+    this.eteam=false;
+  }
   delete_posicion(){
     this.val_posicion={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
+  delete_team(){
+    this.val_team={
       id:null,
       name:null
     };
@@ -277,6 +314,9 @@ export class ScootingComponent implements OnInit {
     if (this.val_posicion.id) {
       data=data+'&player_position='+this.val_posicion.id;
     }
+    if (this.val_team.id) {
+      data=data+'&player_club='+this.val_team.id;
+    }
     console.log(data);
     let self=this;
     this.p.scooting_filter(data).subscribe({
@@ -315,7 +355,14 @@ export class ScootingComponent implements OnInit {
   ir(id_post, posts){
     console.log(id_post)
     console.log(posts)
-    this.router.navigate(['/video/'+id_post, {post: JSON.stringify(posts),user: JSON.stringify(posts[0].user_data)}]);
+    let user:any;
+    for (let i = 0; i < posts.length; i++) {
+      if (posts[i].id==id_post) {
+        user=posts[i].user_data
+      }
+      
+    }
+    this.router.navigate(['/video/'+id_post, {post: JSON.stringify(posts),user: JSON.stringify(user)}]);
   }
 
 }

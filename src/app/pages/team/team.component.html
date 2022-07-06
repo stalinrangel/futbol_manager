@@ -1,1 +1,78 @@
-<p>team works!</p>
+<div>
+	<div class="row home-header">
+	</div>
+	<div class="container-fluid" style="background-color: #E5E5E5; height: 100%; min-height: 100vh;">
+		<br>
+		<span class="categorias">Categoría:</span>
+		<div class="categ" *ngIf="listo">
+			<div class="categHija" *ngFor="let c of categorias" (click)="selec_categoria(c.id)">
+				<input type="radio" style="color: #2A2D34" [checked]="c.ver">
+				<label  class="label_categorias">{{c.name}}</label>
+				<img src="assets/arrow.svg" class="list__arrow icon-y">
+				<ul class="list_categorias" [hidden]="!c.ver">
+					<li  class="lu_categorias" *ngFor="let s of c.sections; let last = last" [ngClass]="{ last: !last }" (click)="selec_section(c.id,s.id)">{{s.name}}</li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<div class="row jugadores" >
+			<div class="col-md-12">
+				<img class="imgRedonda" src="assets/img/manager/upload.png">
+			</div>
+			<div class="col-md-15">
+				<input class="name-jugador" type="text" name="name" [ngModel]="jugador.name" placeholder="Nombre del jugador">
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="jugador.category" placeholder="Categoria">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="sec_selec" [(ngModel)]="jugador.section">
+					<option [value]="s.id" *ngFor="let s of sections">{{s.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-div" name="div_selec" [(ngModel)]="jugador.division">
+					<option [value]="d.id" *ngFor="let d of divisions">{{d.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-primary my-4" style="margin-left: 88%;" (click)="create()">Nuevo jugador</button>
+		</div>
+		<br>
+		<span class="categorias">Staff Técnico:</span>
+		<br>
+		<span class="categorias">ENTRENADORES</span>
+		<div class="row" *ngFor="let t of trainers">
+			<input class="name-entrenador" type="text" [(ngModel)]="t.user_data.firstname">
+		</div>
+		<br>
+		<span class="categorias">JUGADORES</span>
+		<br>
+		<div class="row jugadores" *ngFor="let p of players">
+			<div class="col-md-12">
+				<img class="imgRedonda" src="{{p.user_data.imagen}}">
+			</div>
+			<div class="col-md-15">
+				<input class="name-jugador" type="text" name="name" [ngModel]="p.user_data.firstname">
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="cat_selec" [(ngModel)]="p.category.id">
+					<option [value]="c.id" *ngFor="let c of categorias">{{c.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-cate" name="sec_selec" [(ngModel)]="p.section.id">
+					<option [value]="s.id" *ngFor="let s of sections">{{s.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-15">
+				<select class="selec-div" name="div_selec" [(ngModel)]="p.division.id">
+					<option [value]="d.id" *ngFor="let d of divisions">{{d.name}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
