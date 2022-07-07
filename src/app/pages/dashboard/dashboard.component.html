@@ -51,8 +51,12 @@
           <option [value]="pr" *ngFor="let pr of provinces">{{pr}}</option>
         </select>
       </div>
+      <div class="col-1"><button type="button" class="btn btn-outline-primary boton" style="width: 112px !important" (click)="show_divisiones()">Divisiones</button>
+        <select class="selec_cate-xl" name="country_divisiones" (change)="get_divisiones($event.target.value)" [hidden]="!edivisiones">
+          <option [value]="d.id" *ngFor="let d of divisiones">{{d.name}}</option>
+        </select>
+      </div>
       
-      <div class="col-1"></div>
       <div class="col-1"></div>
       <div class="col-1"><button type="button" class="btn btn-primary  boton" (click)="set_filter()">Buscar</button></div>
       
@@ -85,6 +89,7 @@
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_countrys.name" (click)="delete_countrys()">{{val_countrys.name}} <i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_states.name" (click)="delete_states()">{{val_states.name}} <i class="ni ni-fat-remove eliminar"></i></button>
       <button type="button" class="btn btn-sm btn-white" [hidden]="!val_provinces.name" (click)="delete_provinces()">{{val_provinces.name}} <i class="ni ni-fat-remove eliminar"></i></button>
+      <button type="button" class="btn btn-sm btn-white" [hidden]="!val_divisiones.name" (click)="delete_divisiones()">{{val_divisiones.name}} <i class="ni ni-fat-remove eliminar"></i></button>
     </div>
     
   </div>

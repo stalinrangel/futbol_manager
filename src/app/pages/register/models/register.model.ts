@@ -4,7 +4,7 @@ export class RegisterModel {
     public rpassword:string;
     public user_type:string="club";
     public picture:any;
-    public country:string;
+    public country:any=1;
     public state:string;
     public province:string;
     public phone:string;

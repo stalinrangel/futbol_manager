@@ -1,13 +1,13 @@
-<div style="background-image: url(assets/img/manager/Vector.png); background-size: cover; background-position: center; background: rgba(black, 0.5) !important;height: 100vh;">
+<div style="background-image: url(assets/img/manager/Vector.png); background-size: cover; background-position: center; background: rgba(black, 0.5) !important;height: 100vh;margin-top: 78px;">
   <div class="card-overlay" style="height: 100vh;">
-    <div class="header pb-4 pt-5 pt-lg-8 d-flex align-items-center"></div>
+    <div class="header" ></div>
     <!-- Page content -->
     <div class="mt--6 pb-9">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10">
-          <div class="card">
+          <div class="card" style="margin-top: 160px;">
             <div class="">
-              <div class="row">
+              <div class="row" >
                 <div class="col-6">
                   <div class="text-center text-muted mb-4 login-top">
                     <div class="content-logo">
@@ -34,21 +34,25 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" required name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="Nombre del club">
+                          <input class="form-control i-f" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="Nombre del club">
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" required name="pais" [(ngModel)]="model.country" #pais="ngModel" placeholder="Pais">
+                          <select class="form-control i-f" name="pais" (change)="get_countrys($event.target.value)" #pais="ngModel" [(ngModel)]="model.country" required>
+                            <option [value]="c.id" *ngFor="let c of countrys">{{c.name_es}}</option>
+                          </select>
                         </div>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" required name="state" [(ngModel)]="model.state" #state="ngModel" placeholder="Estado" >
+                          <select class="form-control i-f" name="state" (change)="get_states($event.target.value)" [(ngModel)]="model.state" #state="ngModel" placeholder="Comunidad" required>
+                            <option [value]="st" *ngFor="let st of states">{{st}}</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -57,7 +61,9 @@
                     <div class="col-4">
                       <div class="form-group">
                         <div class="input-group input-group-alternative">
-                          <input class="form-control i-f" required name="municipio" [(ngModel)]="model.province" #municipio="ngModel" placeholder="Provincia">
+                          <select class="form-control i-f" name="municipio" (click)="get_provinces($event.target.value)" [(ngModel)]="model.province" #municipio="ngModel" placeholder="Provincia" required>
+                            <option [value]="pr" *ngFor="let pr of provinces">{{pr}}</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -115,7 +121,7 @@
                   </div>
                 </form>
                 
-                <div class="col-lg-6">
+                <div class="col-lg-6" >
                 </div>
               </div>
             </div>

@@ -64,14 +64,17 @@ export class DashboardComponent implements OnInit {
   public countrys:any=[];
   public states:any=[];
   public provinces:any=[];
+  public divisiones:any=[];
 
   public s_countrys='';
   public s_states='';
   public s_provinces='';
-  
+  public s_divisiones='';
+
   public ecountrys=false;
   public estates=false;
   public eprovinces=false;
+  public edivisiones=false;
   
   public val_countrys:any={
     id:null,
@@ -82,6 +85,10 @@ export class DashboardComponent implements OnInit {
     name:null
   };
   public val_provinces:any={
+    id:null,
+    name:null
+  };
+  public val_divisiones:any={
     id:null,
     name:null
   };
@@ -234,6 +241,15 @@ export class DashboardComponent implements OnInit {
       }
     })
 
+    this.p.divisions().subscribe({
+      next(data){
+        console.log(data);
+        self.divisiones=data;
+      },error(err){
+        console.log(err);
+      }
+    })
+
     /*this.p.add_club_players().subscribe({
       next(data){
         console.log(data);
@@ -326,6 +342,11 @@ export class DashboardComponent implements OnInit {
   show_provinces(){
     if (this.eprovinces==true){this.eprovinces=false;}
     else{ this.eprovinces=true;}
+  }
+
+  show_divisiones(){
+    if (this.edivisiones==true){this.edivisiones=false;}
+    else{ this.edivisiones=true;}
   }
 
   selec_sexo(val,val2){
@@ -427,7 +448,7 @@ export class DashboardComponent implements OnInit {
 
   get_states(id){
     for (let i = 0; i < this.states.length; i++) {
-      if (this.states[0]=id) {
+      if (this.states[i]==id) {
         this.selec_states(id,id);
       }
     }
@@ -455,7 +476,7 @@ export class DashboardComponent implements OnInit {
 
   get_provinces(id){
     for (let i = 0; i < this.provinces.length; i++) {
-      if (this.provinces[0]=id) {
+      if (this.provinces[i]==id) {
         this.selec_provinces(id,id);
       }
     }
@@ -478,6 +499,30 @@ export class DashboardComponent implements OnInit {
       name:null
     };
     this.val_provinces={
+      id:null,
+      name:null
+    };
+    this.set_filter();
+  }
+
+  get_divisiones(id){
+    for (let i = 0; i < this.divisiones.length; i++) {
+      console.log(this.divisiones[i].id,parseInt(id))
+      if (this.divisiones[i].id==parseInt(id)) {
+        this.selec_divisiones(this.divisiones[i].id,this.divisiones[i].name);
+      }
+    }
+  }
+  selec_divisiones(val,val2){
+    console.log(val)
+    this.val_divisiones={
+      id:val,
+      name:val2
+    };
+    this.edivisiones=false;
+  }
+  delete_divisiones(){
+    this.val_divisiones={
       id:null,
       name:null
     };
@@ -511,13 +556,16 @@ export class DashboardComponent implements OnInit {
       data=data+'&player_club='+this.val_team.id;
     }
     if (this.val_countrys.id) {
-      data=data+'&country='+this.val_countrys.id;
+      data=data+'&country='+this.val_countrys.name;
     }
     if (this.val_states.id) {
       data=data+'&state='+this.val_states.id;
     }
     if (this.val_provinces.id) {
       data=data+'&province='+this.val_provinces.id;
+    }
+    if (this.val_divisiones.id) {
+      data=data+'&divisions='+this.val_divisiones.name;
     }
     console.log(data);
     let self=this;
